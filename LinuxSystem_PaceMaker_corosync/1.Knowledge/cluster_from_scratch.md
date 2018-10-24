@@ -137,6 +137,9 @@ heartbeat
 	- and **based on the expected and actual results**, will either *execute any actions that needed to wait for the previous one to complete, or abort processing* and **ask the PEngine** to *recalculate the ideal cluster state based on the unexpected results.*
 
 - In some cases, it may be **necessary to power off nodes in order to protect shared data or complete resource recovery**. For this **Pacemaker comes with STONITHd**. 
+	- **Just because a node is unresponsive, this doesn’t mean it isn’t accessing your data**. The only way to
+be 100% sure that your data is safe, is to use STONITH so we can be certain that the node is truly
+offline, before allowing the data to be accessed from another node.
 	- STONITH is an acronym for ShootThe-Other-Node-In-The-Head and is **usually implemented with a remote power switch**. 
 	- **In Pacemaker, STONITH devices are modeled as resources (and configured in the CIB)** to *enable them to be easily monitored for failure, however STONITHd takes care of understanding the STONITH topology such that its clients simply **request a node be fenced(hàng rào) and it does the rest***
 
