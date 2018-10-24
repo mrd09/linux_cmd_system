@@ -1,0 +1,79 @@
+I want to write a shell script to do the following four things:
+
+1.ssh a remote machine (say hosti)
+2.print the machine name to a file (top_out)
+3.print the first few lines of the output of the 'top' command to the same file as in step2
+4.repeat 1-3 for an other machine
+
+---------------------
+Solved 1
+---------------------
+
+#!/bin/bash
+
+for i in $(seq 1 8); do
+    (echo "host$i"
+     ssh host$i "top -n1 -b | head -n 15") >> ~/mysh/top_out
+    echo "done host$i"
+done
+
+---------------------
+Solved 2
+---------------------
+you can try an expect script to save the output of each hosts after it connects to it, 
+you can also add more commands to it, p.s. : this assumes you have the same username and password for all hosts :
+
+#/usr/bin/expect -f
+
+#write your hosts on a new line inside a file and save it in your workging directory as:
+
+#host 1
+#host 2
+#host 3
+
+#user '' for password if it contains special chars
+#pass arguments to the script as ./script $username '$password' $hosttxt
+set user [lindex $argv 0]
+set pass [lindex $argv 1]
+#pass path to txt file with line separated hosts
+set fhost [lindex $argv 2]
+#set this to the  path where you need to save the output e.g /home/user/output.txt
+set wd "/home/$user/log.txt"
+#open hosts file for parsing
+set fhosts [open $fhost r]
+exec clear
+#set loguser 1
+
+proc get_top {filename line user pass} {
+     spawn ssh -l $user $line
+      expect {
+          "$ " {}
+      "(yes/no)? " {
+            send "yes\r"
+            expect -re "assword:|assword: "
+            send "$pass\r"
+      }
+     -re "assword:|assword: " {
+            send "$pass\r"
+      }
+     default {
+        send_user "Login failed\n"
+     exit 1
+    }
+  }
+  expect "$ " {}
+  send "top -n1 -b | head -n 15\r"
+  expect -re "\r\n(.*)\r(.*)(\\\$ |# )"  {
+       set outcome "$expect_out(1,string)\r"
+       send "\r"
+  }
+
+  puts $filename "$outcome\n\n-------\n"
+}
+
+
+ while {[gets $fhosts line] !=-1} {
+       set filename [open $wd "a+"]
+       get_top $filename $line $user $pass
+       close $filename
+ }

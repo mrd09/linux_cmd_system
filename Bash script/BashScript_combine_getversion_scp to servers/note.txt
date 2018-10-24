@@ -1,0 +1,5 @@
+@Joon 1.version.sh, 2.scp.sh, 3.version_scp.sh
+1.only print out the version
+2. only scp the version.sh to dest IP
+------------------------
+3. New update: get version infor and scp version to destIP

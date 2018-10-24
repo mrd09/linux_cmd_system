@@ -1,0 +1,123 @@
+
+<Create Variable>
++ dbIp=10.60.70.200
++ dbUser=root
++ dbPw=castis
++ db=cms_4k
++ sdpIp=10.60.70.200
++ sdpUser=adi
++ sdpPw=adi
++ adiFolder=/home/dath/pushSDP/adiFile
+++ date +%F-%H%M%S
++ homeFolder=/home/dath/pushSDP/2017-12-14-091409
++ processingAdi=/home/dath/pushSDP/2017-12-14-091409/processing
++ bakFolder=ADI_BACKUP
++ limit=100
+</Create>
+
+<Create and Copy Folder>
++ mkdir -p /home/dath/pushSDP/2017-12-14-091409/ADI_BACKUP
++ errorLog=/home/dath/pushSDP/2017-12-14-091409/error.log
++ cp -r /home/dath/pushSDP/adiFile /home/dath/pushSDP/2017-12-14-091409/processing
+</Create and Copy>
+
+<?Quick understanding?>
+Need to push image first => if sucess => continue to push ADI.xml
+<?Quick?>
+
++ echo '=====================================PUSH ADI FILE VIA FTP============================================='
+=====================================PUSH ADI FILE VIA FTP=============================================
+
+<totalNumber and counting>
+########## execute this for put value in totalNumber
+++ cat /home/dath/pushSDP/2017-12-14-091409/result.txt
+++ awk '{print $2}'
+++ sort
+++ uniq
+++ wc -l
++ totalNumber=44843
++ startCount=0
+</totalNumber and count>
+
+<exceedLimit>
++ exceedLimit=false
+</exceedLimit>
+
+<For Loop>
+########## execute this for put condition in for loop
+++ cat /home/dath/pushSDP/2017-12-14-091409/result.txt
+++ sort
+++ awk '{print $2}'
+++ uniq
++ for offer in '`cat ${homeFolder}/result.txt | awk '\''{print $2}'\'' | sort | uniq`'
+    ####### execute this for if statement:
+	++ curl ftp://10.60.70.200 --user adi:adi
+	++ grep -c OFFER
+	+ [[ 9 -gt 100 ]]
+	
+	+ false
+	+ startCount=1
+
+	######## execute this for put date in echo infor
+	++ date '+%F %H:%M:%S'
+	+ echo '[INFO-2017-12-14 09:14:13] [1 / 44843 ]  Working on OFFER : 1000.'
+		[INFO-2017-12-14 09:14:13] [1 / 44843 ]  Working on OFFER : 1000.
+
+	####### execute this for put number in offer =
+	++ echo 1000
+	++ sed -e 's/[[:space:]]*$//g'
+	+ offer=1000
+
+	####### execute this for put condition in statement if
+	++ ls /home/dath/pushSDP/2017-12-14-091409/processing
+	++ grep -c OFFER-1000-
+	+ [[ 1 -ne 1 ]]
+	+ imagePushSuccess=false
+
+	####### execute this for put image's path in listOfImage then put condition in for loop
+	++ grep -w 1000 /home/dath/pushSDP/2017-12-14-091409/result.txt
+	++ awk '{print $1}'
+	++ sort
+	++ uniq
+	+ listOfImage='/NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg
+					/NAS_INGEST01/cms/repository/asset/201502/2918/2918_D.jpg'
+	
+	+ for image in '${listOfImage}'	
+	####### execute this for put value in variable "image"
+	++ echo /NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg
+	++ sed -e 's/[[:space:]]*$//g'
+	+ image=/NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg
+
+	+ pushSdp /NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg
+	+ filePath=/NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg
+	+ [[ ! -f /NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg ]]
+	
+	####### execute this for put value in echo infor
+	++ date '+%F %H:%M:%S'
+	+ echo '[ERROR-2017-12-14 09:14:13] File /NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg not found.'
+		[ERROR-2017-12-14 09:14:13] File /NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg not found.
+		
+	+ return 2
+	+ [[ 2 -eq 0 ]]
+
+	+ [[ 1 -eq 1 ]]
+
+	####### execute this for put value in echo infor
+	++ date '+%F %H:%M:%S'
+	+ echo '[ERROR-2017-12-14 09:14:13] Fail to push Image: /NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg for OfferId: 1000'
+		[ERROR-2017-12-14 09:14:13] Fail to push Image: /NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg for OfferId: 1000
+
+	####### execute this for put value in echo infor
+	++ date '+%F %H:%M:%S'
+	+ echo '[ERROR-2017-12-14 09:14:13] OfferID : 1000. Reason: Image failed to push: /NAS_INGEST01/cms/repository/asset/201502/2916/2916_A.jpg.'
+	
+	+ imagePushSuccess=false
+	+ break
+	+ false
+</For Loop>
+
+<Note for error Log>
+FAIL => will have date-time
+DONE => dont have date-time
+Not Existed => dont have dat-time
+</Note>

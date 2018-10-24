@@ -1,0 +1,3 @@
+HardLink: Usefull when backup, delete original file can use the hardlink file
+
+Softlink: Useful when upgrade version, if new version has problem, can point back to old version

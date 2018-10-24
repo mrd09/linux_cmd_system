@@ -1,0 +1,10 @@
+
+
+mysqldump -t -uroot -pcastis cms category --where="uriId LIKE '/VOD/Thiếu Nhi/Phim Bộ Tính Phí%'" > test.sql
+
+mysqldump -uroot -pcastis cms category --where="uriId LIKE '/VOD/Thiếu Nhi/Phim Bộ Tính Phí%'" > test.sql
+
+ --no-create-info, -t
+
+           Do not write CREATE TABLE statements that re-create each dumped table.
+

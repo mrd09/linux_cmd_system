@@ -1,0 +1,21 @@
+
+NAME
+       gzip, gunzip, zcat - compress or expand files
+
+-d --decompress --uncompress
+              Decompress.
+
+
+[root@TESTBED-VOD-CMS CMS_DB]# gzip -d MARIADB_CMS_172.23.40.6_2018060604.sql.gz 
+[root@TESTBED-VOD-CMS CMS_DB]# ll -rth
+total 818M
+-rw-r--r-- 1 root root 293M Feb  4 17:23 1.7_LiveDB_172.23.40.6_2017100704.sql
+-rw-r--r-- 1 adi  adi  526M Jun  6 15:14 MARIADB_CMS_172.23.40.6_2018060604.sql
+
+---------------------
+
+[root@TESTBED-VOD-CMS CMS_DB]# gzip MARIADB_CMS_172.23.40.6_2018060604.sql
+[root@TESTBED-VOD-CMS CMS_DB]# ll -rth
+total 343M
+-rw-r--r-- 1 root root 293M Feb  4 17:23 1.7_LiveDB_172.23.40.6_2017100704.sql
+-rw-r--r-- 1 adi  adi   51M Jun  6 15:14 MARIADB_CMS_172.23.40.6_2018060604.sql.gz

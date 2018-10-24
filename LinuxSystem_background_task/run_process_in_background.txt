@@ -1,0 +1,6 @@
+- them & chay o background (neu ko co thi se treo session de run)
+	./CiGFMServer start &
+	Castanets CiGFMServer Version : CiGFMServer 2.0.0 QR1 Start.
+
+- Thuong chay file service init.d
+

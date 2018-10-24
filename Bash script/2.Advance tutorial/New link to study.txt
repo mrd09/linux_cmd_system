@@ -1,0 +1,5 @@
+http://www.tldp.org/LDP/Bash-Beginners-Guide/html/
+
+http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html
+
+http://www.tldp.org/LDP/abs/html/index.html

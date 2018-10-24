@@ -1,0 +1,21 @@
+1. Count the column of the output filtered result:
+
+[root@C3-VOD-02 ~]# ll /castis/bin/CiADS/ | grep "\->" | awk "{print NF}" 
+	11
+
+2. So the link version is always in the last column: print out the last column
+
+[root@C3-VOD-02 ~]# ll /castis/bin/CiADS/ | grep "\->" | awk '{print $11}'
+	CiADS_64_v2.5.7.2.QR1
+
+------------------------------
+
+show the folder begin with Ci:
+[root@C3-VOD-02 ~]# ll /castis/bin/ | grep Ci | awk "{print NF}"
+9
+9
+9
+[root@C3-VOD-02 ~]# ll /castis/bin/ | grep Ci | awk '{print $9}'
+CiADS
+CiDFSServer
+CiVODServer

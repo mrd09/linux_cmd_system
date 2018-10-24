@@ -1,0 +1,10 @@
+
+
+Access Failure(550)
+
+chroot_local_user=YES
+
+data_connection_timeout=1200
+
+# Uncomment this to enable any form of FTP write command.
+write_enable=YES

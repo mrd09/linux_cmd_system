@@ -1,0 +1,12 @@
+Changing special permissions
+
+The octal value of the set uid bit is 4000. the set gid bit is 2000, and the sticky bit is 1000. These strange octal values aren't shown when you list them. Instead, the character representation is used. When using the chmod command
+
+chmod u+s myfile
+
+adds the setuid bit. The set group iD bit can be set using
+
+chmod g+s myfile
+To make a program set uid using the octal representaiton,the command would be
+
+chmod 4755 program

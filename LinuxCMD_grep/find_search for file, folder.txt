@@ -1,0 +1,8 @@
+ find /dir/ -name jdbc.properties	=> find file with name
+
+ find / -type f | grep "\.sh$"		=> find file with extension
+ 
+ # find /castis/ -type d | grep Ci	=> find folder
+	/castis/bin/CiDFSServer
+	/castis/bin/CiVODServer
+	/castis/bin/CiADS

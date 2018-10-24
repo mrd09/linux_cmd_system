@@ -1,0 +1,91 @@
+
+--------- Case Study -------------
+C1: Comment Multiple lines in vim:
+	1. Enter visual mode by pressing: "v" to jump in Visual Mode
+	2. select the lines you like to comment (up/down arrow or j/k)
+	3. Press: ":" to enter the substitution mode
+	3. enter :'<,'>s/^/#/c 
+		=> which translates to: in selection (:) replace beginning of line (^) with '#' and there will have confirm each substitution
+
+C2: Uncomment Multiple lines in vim:
+	1. Enter visual mode by pressing: "v" to jump in Visual Mode
+	2. select the lines you like to comment (up/down arrow or j/k)
+	3. Press: ":" to enter the substitution mode
+	3. enter :'<,'>s/^#//c 
+		=> which translates to: in selection (:) replace beginning of line (^) have '#' with empty character " " and there will have confirm each substitution
+
+
+---------- Tutorial --------------
+h - 	move cursor left
+j - 	move cursor down
+k - 	move cursor up
+l - 	move cursor right
+
+^	Move cursor to the beginning of the line.
+$	Move cursor to the end of the current line.
+
+w	= ctrl + -> : Move cursor forward to the next word, stopping at punctuation.
+b	= ctrl + <- : Move cursor backwards to the previous word, stopping at punctuation.
+
+(	Move cursor to the beginning of the previous sentence (where a punctuation mark and two spaces define a sentence).
+)	Move cursor to the beginning of the next sentence.
+
+gg	Move cursor to the first line of your document. Other numbers will move to the line specified by number (ex. 50G goes to the 50th line).
+G	Move cursor to the last line of your file.
+
+Ctrl-B  page up
+Ctrl-F  page down
+
+Ctrl+G 	Display the filename you are working on
+
+--------------------------------------------------
+i	insert text
+a	start adding text after the cursor position
+o	open (append) blank line below current line (no need to press return)
+O	open blank line above current line
+R (Shift + r) : Replace many character, ESC when done
+r 	Replace one character only
+
+--------------------------------------------------
+:set nu  set number line
+: [num] [enter] - Go To that line in the document
+:set nu! unset/hide number line
+
+--------------------------------------------------
+v - 	start visual mode, mark lines, then do a command (like y-yank)
+	when visual mode can use $ or ^
+V	(Shift + V) visual mode, quick mark current line
+
+Ctrl + v : start block visual mode: 
+	For Ex: if want to comment many line copy # by yank(y): Ctrl + v for visual mode and now press the down arrow key to select till the last line you wanna comment.
+	then paste(p)
+
+yy  -> p   : yy => then p paste to the next line below the cursor 
+
+2yy + and combine with arrow direction to select the line => then p paste to the next line below the cursor  
+
+y -> p 	: Copy 2 line
+
+d	delete a chracter
+
+dd	delete a line in vi
+
+cw: delete a word forward
+
+cb: delete a word backward
+
+u	: undo
+
+/	: search
+	n:	next search
+	N:	backward search
+
+--------------------------------------------------
+:%s/old/new/gc - replace all old with new throughout file with confirmations
+	a to substitute this and all remaining matches ("all" remaining matches)
+--------------------------------------------------
+:set backup	: make a backup file with "~" at tail. For Ex: backup~
+	[root@TESTBED-VOD-CMS test]# ll
+	total 8
+	-rw-rw-r-- 1 root root 87 Oct 27 09:41 a.txt
+	-rw-rw-r-- 1 root root 77 Oct 27 09:26 a.txt~

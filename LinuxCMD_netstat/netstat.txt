@@ -1,0 +1,48 @@
+[root@nobody ~]# netstat -tulpna		[--tcp|-t]  [--udp|-u] [--listening|-l] [--numeric|-n] [--program|-p] [--all|-a]
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name
+tcp        0      0 0.0.0.0:22                  0.0.0.0:*                   LISTEN      2004/sshd
+tcp        0      0 127.0.0.1:25                0.0.0.0:*                   LISTEN      2083/master
+tcp        0      0 127.0.0.1:6010              0.0.0.0:*                   LISTEN      2462/sshd
+tcp        0     64 10.0.0.31:22                10.0.0.78:1161              ESTABLISHED 2462/sshd
+tcp        0      0 :::22                       :::*                        LISTEN      2004/sshd
+tcp        0      0 ::1:25                      :::*                        LISTEN      2083/master
+tcp        0      0 ::1:6010                    :::*                        LISTEN      2462/sshd
+udp        0      0 0.0.0.0:68                  0.0.0.0:*                               1777/dhclient
+
+
+[root@nobody ~]# netstat -r
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+10.0.0.0        *               255.255.255.0   U         0 0          0 eth1
+link-local      *               255.255.0.0     U         0 0          0 eth1
+default         10.0.0.1        0.0.0.0         UG        0 0          0 eth1
+
+[root@nobody ~]# netstat -i
+Kernel Interface table
+Iface       MTU Met    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth1       1500   0    20132      0      0      0     3243      0      0      0 BMRU
+lo        65536   0     4004      0      0      0     4004      0      0      0 LRU
+
+
+[root@nobody ~]# ethtool -S eth1
+NIC statistics:
+
+[root@nobody ~]# netstat -s
+Ip:
+    12309 total packets received
+    2 with invalid addresses
+    0 forwarded
+    426 with unknown protocol
+    0 incoming packets discarded
+    11880 incoming packets delivered
+    7071 requests sent out
+    20 dropped because of missing route
+Icmp:
+    0 ICMP messages received
+    0 input ICMP message failed.
+    ICMP input histogram:
+    64 ICMP messages sent
+    0 ICMP messages failed
+    ICMP output histogram:
+        destination unreachable: 64

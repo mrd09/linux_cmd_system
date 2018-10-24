@@ -1,0 +1,7 @@
+@team: i have finished monitor vip LSM . You can see it on VSM server. Path: 
++ /castis/bin/monitor_vip.sh
++ /castis/bin/startInstance.sh
+
+Scenarios:
+1. monitor_vip.sh : while loop running and check if process is up, original bond is up -> up bond VIP. If not running, down bond VIP.
+2. startInstance.sh: Put into crontab. Run every minute. Check if monitor_vip.sh is running or not. If running -> do nothing. If not running, start process.

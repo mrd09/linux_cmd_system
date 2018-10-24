@@ -1,0 +1,10 @@
+[vt_admin@CMS-OPER-02 ~]$ for i in 1 2 3 4 5 6; do echo `mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -Dcms -sN -e "select count(contentSubsetId) from contentasset where fileType='2' and fileName like '%20180${i}%';"`;done
+1685
+1184
+1379
+3870
+4133
+3231
+
+[vt_admin@CMS-OPER-02 ~]$ for i in 1 2 3 4 5 6; do echo `mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -Dcms -sN -e "select count(contentSubsetId) from contentasset where fileType='2' and fileName like '%20180${i}%';"`;done | awk '{sum+=$1} END {print sum}'
+15482

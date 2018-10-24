@@ -1,0 +1,48 @@
+wait one process to finish and execute another process
+
+You can achieve a simple way of process synchronization in bash using wait which waits for one or more number of background jobs to complete before running the next.
+
+You generally run jobs in the background by appending the & operator to the end of a command. At that point the PID (process ID) of the newly created background process is stored in a special bash variable: $! and wait command allows this process to be terminate before running the next instruction.
+
+This can be demonstrated by a simple example
+
+--------------------------------------------------
+$ cat mywaitscript.sh
+
+#!/bin/bash
+
+sleep 3 &
+
+wait $!     # Can also be stored in a variable as pid=$(echo $!)
+
+# Waits until the process 'sleep 3' is completed. Here the wait on a single process is done by capturing its process id
+
+echo "I am waking up"
+
+sleep 4 &
+sleep 5 &
+
+wait                    # Without specifying the id, just 'wait' waits until all jobs started on the background is complete.
+
+echo "I woke up again"
+----------------------------------------------------
+
+Command ouput
+
+----------------------------------------------------
+
+$ time ./mywaitscript.sh
+I am waking up
+I woke up again
+
+real    0m8.012s
+user    0m0.004s
+sys     0m0.006s
+
+----------------------------------------------------
+
+You can see the script has taken ~8s to run to completion. The breakdown on the time is
+
+sleep 3 will take full 3s to complete its execution
+sleep 4 and sleep 5 are both started sequentially one after next and it has taken the max(4,5) which is approximately ~5s to run.
+You can apply the similar logic to your question above. Hope this answers your question.

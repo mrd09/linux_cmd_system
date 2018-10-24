@@ -1,0 +1,25 @@
+  :s/NAS/home\/dath\/NAS/g	=> search and replace in 1 line
+	=> Explaination: want to add in head from /NAS_DIST01/ => /home/dath/NAS_DIST01/
+  :%s/search/replace/g	=> Find each occurrence of 'search' (in all lines), and replace it with 'replace'.
+  :%s/NAS/home\/dath\/NAS/g
+	Substitution
+	s:
+	%s – specifies all lines. Specifying the range as ‘%’ means do substitution in the entire file.
+	g – specifies all occurrences in the line. With the ‘g’ flag , you can make the whole line to be substituted. 
+	If this ‘g’ flag is not used then only first occurrence in the line only will be substituted.
+
+----------------------------
+####Standard Subsitution####
+Original Text: This is his idea
+
+	:s/his/her/g
+
+Translated Text: Ther is her idea
+
+####Whole Word Subsitution###
+Original Text: This is his idea
+
+	:s/\<his\>/her/
+
+Translated Text: This is her idea
+Note:: You should enclose the word with < and > , which will force the substitution to search only for the full word and not any partial match

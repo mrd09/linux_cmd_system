@@ -1,0 +1,16 @@
+https://wiki.clusterlabs.org/wiki/Example_configurations
+
+Enter in the configuration menu
+
+crm(live)# cib use test-conf
+crm(test-conf)# configure
+crm(test-conf)configure#
+
+See current configuration
+see the crm configuration
+This will show you the base CRM directives configured in your currently running Heartbeat cluster
+	#crm(test-conf)configure# show
+
+see the cib.xml
+This will show you the cib.xml contents currently in use on your running Heartbeat cluster
+	#crm(test-conf)configure# show xml

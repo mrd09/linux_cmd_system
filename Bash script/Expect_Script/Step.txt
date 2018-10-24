@@ -1,0 +1,50 @@
+Step:
+_____________________________
+
+Input
+
+1. Password File: Viettel@3214, Viettel@123 ...
+2. IP List
+3. Output file: hostname.log
+
+_____________________________
+
+
+
+Check SSH
+
+	sshpass -p Viettel@3214 ssh 172.17.9.70
+
+SCP
+
+	sshpass -p Viettel@123 scp -r updateLib.zip vt_admin@172.17.9.70:/home/vt_admin
+	sshpass -p Viettel@123 ssh 172.17.9.70
+
+Kiem tra truoc khi update:
+
+	rpm -qa | grep glibc
+
+	rpm -qa | grep openssh
+	
+	rpm -qa | grep openssl
+
+	rpm -qa | grep bash
+
+Unzip 
+	unzip updateLib.zip
+	cd updateLib
+	
+Install Update
+	su root
+
+	rpm -Uvh *
+
+	ll
+
+	rpm -qa | grep glibc
+
+	rpm -qa | grep openssh
+	
+	rpm -qa | grep openssl
+
+	rpm -qa | grep bash

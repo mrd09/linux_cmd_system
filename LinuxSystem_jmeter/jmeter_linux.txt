@@ -1,0 +1,14 @@
+- Install jmeter in linux:
+ + download jmeter.tgz
+ + tar -x
+ + make the link like:
+	 [root@TESTBED-ADS perf_test]# cd /usr/local/sbin/
+	[root@TESTBED-ADS sbin]# ll -rth | grep jmeter
+	lrwxrwxrwx 1 root root 42 Apr 21  2016 jmeter-server -> /root/apache-jmeter-2.13/bin/jmeter-server
+	lrwxrwxrwx 1 root root 35 Apr 21  2016 jmeter -> /root/apache-jmeter-2.13/bin/jmeter
+ + chmod the jmeter and jmeter-server in /root/apache-jmeter-2.13/bin/
+
+ -------------------------
+
+ knowledge base: https://jmetervn.com/2016/10/20/thread-group-in-jmeter/
+ 

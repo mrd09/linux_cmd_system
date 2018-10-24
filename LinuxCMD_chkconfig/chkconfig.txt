@@ -1,0 +1,17 @@
+ chkconfig tool is used in Red Hat based systems (like CentOS) to control what services are started at which runlevels.
+ Running the command chkconfig --list will display a list of services whether they are enabled or disabled for each runlevel.
+
+[root@CASTIS-DEV-1 bin]# chkconfig --list
+CiDFSServerMonitor	0:off	1:off	2:off	3:off	4:off	5:on	6:off
+FileInstallerMonitor	0:off	1:off	2:off	3:off	4:off	5:on	6:off
+FileManagerMonitor	0:off	1:off	2:off	3:off	4:off	5:on	6:off
+FileRegisterMonitor	0:off	1:off	2:off	3:off	4:off	5:on	6:off
+
+Run Level	Mode	Action
+0	Halt	Shuts down system
+1	Single-User Mode	Does not configure network interfaces, start daemons, or allow non-root logins
+2	Multi-User Mode	Does not configure network interfaces or start daemons.
+3	Multi-User Mode with Networking	Starts the system normally.
+4	Undefined	Not used/User-definable
+5	X11	As runlevel 3 + display manager(X)
+6	Reboot	Reboots the system

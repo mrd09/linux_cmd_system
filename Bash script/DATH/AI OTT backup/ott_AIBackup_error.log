@@ -1,0 +1,22 @@
++ Log_Dir=/NAS_INGEST01/cms/fake/log_send_to_AI_backup
+++ date +%Y%m
++ DATE=201804
++ OttCdnPath='/NAS_INGEST01/cdn/ott_rvod/*'
++ AssetInstaller_Backup=/NAS_INGEST01/cdn/ott_rvod_backup
++ OTT=m3u8
++ print_log =========================================================================================
+++ date +%F_%T
++ echo '2018-04-17_11:00:01 ========================================================================================='
+++ date +%F
+++ date +%F
+/NAS_INGEST01/cms/fake/ott_to_AIBackup.sh: line 10: /NAS_INGEST01/cms/fake/log_send_to_AI_backup/2018-04-17_ott_to_AIBackup.log: No such file or directory
++ move_ott_file_to_AIBackup
++ print_log '::::::::::move_ott_file_to_AIBackup start::::::::::'
+++ date +%F_%T
++ echo '2018-04-17_11:00:01 ::::::::::move_ott_file_to_AIBackup start::::::::::'
+++ date +%F
+++ date +%F
+/NAS_INGEST01/cms/fake/ott_to_AIBackup.sh: line 10: /NAS_INGEST01/cms/fake/log_send_to_AI_backup/2018-04-17_ott_to_AIBackup.log: No such file or directory
+++ ls '/NAS_INGEST01/cdn/ott_rvod/*'
+++ grep m3u8
+ls: cannot access /NAS_INGEST01/cdn/ott_rvod/*: No such file or directory

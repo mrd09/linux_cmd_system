@@ -1,0 +1,1 @@
+you can do make link and restart with expect scrtpt. but need to change some..

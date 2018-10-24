@@ -1,0 +1,18 @@
+Tim duong dan den file
+
+[root@nobody opt]# find /opt/ -name httpd-xampp.conf
+	/opt/lampp/etc/extra/httpd-xampp.conf
+
+ find /dir/ -name jdbc.properties	=> find file with name
+
+ find / -type f | grep "\.sh$"		=> find file with extension
+ 
+ # find /castis/ -type d | grep Ci	=> find folder
+	/castis/bin/CiDFSServer
+	/castis/bin/CiVODServer
+	/castis/bin/CiADS
+
+ grep -ri "/data*" /castis/bin/		=> search in content
+	-i : case-insensitive
+	-r : recursive
+ grep -nrw /castis/bin -e string	=> search in content

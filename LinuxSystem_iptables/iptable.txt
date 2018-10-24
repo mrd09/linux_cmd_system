@@ -1,0 +1,12 @@
+dmesg to check the iptable drop from the kernel:
+
+[root@TESTBED-VOD-CMS vt_admin]# dmesg | grep -i 10.60.70.198
+IPTABLES-IN Drop: IN=eth0 OUT= MAC=6c:ae:8b:54:9d:92:6c:ae:8b:54:a5:0a:08:00 SRC=10.60.70.198 DST=10.60.70.200 LEN=52 TOS=0x00 PREC=0x00 TTL=64 ID=34083 DF PROTO=TCP SPT=38135 DPT=80 WINDOW=14600 RES=0x00 SYN URGP=0 
+
+[root@TESTBED-VOD-CMS vt_admin]# netstat -anp | grep 10.60.70.198
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address               Foreign Address             State       PID/Program name
+tcp        0 186880 10.60.70.200:80             10.60.70.198:42162          ESTABLISHED 19280/nginx         
+tcp        0      0 10.60.70.200:80             10.60.70.198:42170          ESTABLISHED 19280/nginx         
+tcp        0  96804 10.60.70.200:80             10.60.70.198:53345          ESTABLISHED 19280/nginx
+

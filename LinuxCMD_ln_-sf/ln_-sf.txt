@@ -1,0 +1,4 @@
+ln -sf FilewithVersion_needlink FilewantToLink
+
+	-s : softlink
+	-f, --force 	If the destination file or files already exist, overwrite them.

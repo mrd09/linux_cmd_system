@@ -1,0 +1,53 @@
+CMS NAS_INGEST02 <-> Ateme
+
+172.23.32.10:/hnas1-data01
+                      200T  180T   21T  90% /NAS_INGEST01
+172.23.32.11:/hnas1-data02
+                      200T   70T  131T  35% /NAS_INGEST02
+
+
+===== Input Ateme encode file: NAS_INGEST02 need config samba same as NAS_INGEST01 ====
+
+NAS_INGEST01 input <-> Ateme
+
+	in Linux(NAS_INGEST01) Samba Share config:
+		[repository]:
+		path= /NAS_INGEST01/cms/repository/asset
+
+	in Windows(Ateme) server can access the path:
+		\\172.23.32.10/repository/201804/215203/215203_2.ts
+
+NAS_INGEST02 input <-> Ateme: Need to be the same
+
+===== Output Ateme folder:
+
+NAS_INGEST01 output <-> Ateme
+	in Linux(NAS_INGEST01) Samba Share config:
+		[Encoding]:
+		path= /NAS_INGEST01/cms/encoding/
+
+	in Windows(Ateme) server can access the path:
+	\\172.23.32.10\Encoding\processing_ott\%OUTPUT_NAME%.m3u8
+
+NAS_INGEST02 output <-> Ateme: Need to be the same
+
+
+--------------------------
+
+# testparm
+Load smb config files from /etc/samba/smb.conf
+rlimit_max: increasing rlimit_max (1024) to minimum Windows limit (16384)
+Processing section "[homes]"
+Processing section "[printers]"
+Processing section "[encoding]"
+Processing section "[repository]"
+Loaded services file OK.
+Server role: ROLE_STANDALONE
+Press enter to see a dump of your service definitions
+…..
+
+Navigate from windows to: 10.60.70.200:
+\\10.60.70.200
+
+----
+/usr/bin/smbclient -L host

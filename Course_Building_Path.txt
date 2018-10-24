@@ -1,0 +1,48 @@
+----------------
+BEGINNER
+----------------
+Course Schedule: Linux Essentials Certification Basic_ATIT 
+	https://linuxacademy.com/cp/coursescheduler/view/id/95471
+
+Bootloading with GRUB
+	https://linuxacademy.com/cp/modules/view/id/97
+
+Git Quick Start
+	https://linuxacademy.com/cp/modules/view/id/88
+
+Learning Python 2.7 Developement
+	https://linuxacademy.com/cp/coursescheduler/view/id/95468
+____________________________________________
+
+----------------------
+INTERMIDIATE
+----------------------
+
+Mastering The Linux Command Line
+	https://linuxacademy.com/cp/modules/view/id/10
+
+Linux By Example For Novices To Pros
+	https://linuxacademy.com/cp/modules/view/id/19
+
+The System Administrator’s Guide to Bash Scripting
+	https://linuxacademy.com/cp/modules/view/id/72
+
+BYOL: Build Your Own Linux From Scratch
+	https://linuxacademy.com/cp/modules/view/id/100
+
+**********
+---------------
+UPGRADE
+---------------
+
+SQL Primer
+	https://linuxacademy.com/cp/modules/view/id/52
+
+Git and Git lab - Start to Finish
+	https://linuxacademy.com/cp/modules/view/id/36
+
+Nagios Certified Professional
+	https://linuxacademy.com/cp/modules/view/id/107
+
+
+

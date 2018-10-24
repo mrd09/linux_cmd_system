@@ -1,0 +1,6 @@
+
+NAME
+       dmesg - print or control the kernel ring buffer
+
+[vt_admin@HE-VSM-WEB01 ~]$ dmesg
+IPTABLES-IN Drop: IN=bond0 OUT= MAC=6c:ae:8b:54:a4:0a:64:64:9b:20:98:a1:08:00 SRC=172.17.10.110 DST=10.60.67.196 LEN=40 TOS=0x00 PREC=0x00 TTL=45 ID=0 DF PROTO=TCP SPT=22 DPT=42725 WINDOW=0 RES=0x00 RST URGP=

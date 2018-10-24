@@ -1,0 +1,40 @@
+man bash:
+  /dev/tcp/host/port
+           If host is a valid hostname or Internet address, and port is an integer  port  number
+           or  service name, bash attempts to open a TCP connection to the corresponding socket.
+    /dev/udp/host/port
+           If host is a valid hostname or Internet address, and port is an integer  port  number
+           or  service name, bash attempts to open a UDP connection to the corresponding socket.
+
+
+[root@TESTBED-VOD-CMS vt_admin]# cat < /dev/tcp/10.60.70.223/8501
+bash: connect: No route to host
+bash: /dev/tcp/10.60.70.223/8501: No route to host
+
+[root@TESTBED-VOD-CMS vt_admin]# traceroute 10.60.70.223
+traceroute to 10.60.70.223 (10.60.70.223), 30 hops max, 60 byte packets
+ 1  10.60.70.223 (10.60.70.223)  0.166 ms !X  0.170 ms !X  0.154 ms !X
+
+ ----------------------------
+
+ [root@localhost ~]# telnet 192.168.0.126 18089
+Trying 192.168.0.126...
+Connected to 192.168.0.126.
+Escape character is '^]'.
+^]
+
+# telnet google.com 443 
+
+Trying 74.125.237.19.
+.. Connected to google.com. Escape character is '^]'.
+Please refer all article related questions to:
+  
+YOU MAY ALSO BE INTERESTED IN:
+
+
+----------------------------
+TCP
+# nmap -p 80 -sT google.com
+
+UDP
+# nmap -p 80 -sU google.com

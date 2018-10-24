@@ -1,0 +1,19 @@
+http://mywiki.wooledge.org/BashFAQ/031
+
+BASH:
+
+http://tldp.org/LDP/abs/html/index.html
+
+http://mywiki.wooledge.org/BashFAQ/
+
+https://bash.cyberciti.biz/guide/Main_Page
+
+-------------
+
+WIKI for command:
+
+man ${command}
+
+https://wiki.archlinux.org/index.php/Table_of_contents
+
+https://www.gnu.org/software/coreutils/manual/html_node/test-invocation.html#test-invocation

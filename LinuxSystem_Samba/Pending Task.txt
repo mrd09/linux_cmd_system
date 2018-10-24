@@ -1,0 +1,17 @@
+net config workstation
+
+\\172.23.242.41\test
+
+
+mkdir ~/Desktop/Windows-Share sudo 
+
+
+
+mount.cifs //WindowsPC/Share /home/geek/Desktop/Windows-Share -o user=geek
+
+
+https://access.redhat.com/solutions/448263
+
+[root@host ~]# mount -t cifs -o username=<share user>,password=<share password> //WIN_PC_IP/<share name> /mnt
+
+[root@host ~]# mount -t cifs -o username=<share user>,password=<share password>,domain=example.com //WIN_PC_IP/<share name> /mnt

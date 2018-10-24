@@ -1,0 +1,36 @@
+Complete or Failed
+
+HYB or OTT or Both
+
+File name seperate by space:
+
+Temp folder: touch all file name, then move to exact folder
+
+--------------------------
+Complete
+
+-> 2	-> if 26C -> HYB_AD
+	-> if not 26C -> HYB_VOD
+
+-> 4	-> if 47C -> OTT_AD
+	-> if not 47C -> OTT_VOD
+
+---------------------------
+
+Complete: C
+Failed: F
+=>> "Status" = C or F
+
+FileNames with space:
+List=
+for i in list => if i like _2: H, if i like _4: O
+=> "Type" = H or O
+
+=>> "Code" = "Status""Type" (handle space)
+
+CASE CODE in
+
+CH if Name= _26C ->AD ... else
+CO if Name= _47C ->AD ... else
+FH if Name= _26C ->AD ... else
+CO if Name= _47C ->AD ... else

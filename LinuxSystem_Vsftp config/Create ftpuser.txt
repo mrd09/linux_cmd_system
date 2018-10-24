@@ -1,0 +1,22 @@
+Creating an FTP Account within Linux.
+For this example, I am using Vsftpd, as it is the default FTP client distributed with RedHat, however these instructions should apply to most FTP server applications.
+
+Create a FTP user group. eg: ftpaccounts
+/usr/sbin/groupadd ftpaccounts
+
+Add a new user to this group, and set the default path of that user to /home/user/.
+/usr/sbin/adduser -g ftpaccounts -d /home/user/ testuser
+
+Set a password for the newley created user.
+passwd testuser
+
+Set ownership of /home/user to the testuser and ftpaccounts.
+chown testuser:ftpaccounts /home/user
+
+Give Read/Write access to testuser and all members in ftpaccounts
+chmod 775 /home/user
+
+Edit /etc/vsftpd/vsftpd.conf file and make sure 'local_enable=YES' is uncommented.
+
+Restart the vsftpd service.
+/etc/init.d/vsftpd restart

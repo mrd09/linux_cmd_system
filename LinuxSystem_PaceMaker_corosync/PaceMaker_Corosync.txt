@@ -1,0 +1,12 @@
+PaceMaker + corosync
+
+https://1hosting.com.vn/cau-hinh-apache-high-availability-cluster-tren-centos-7-p1/
+https://1hosting.com.vn/cau-hinh-apache-high-availability-cluster-tren-centos-7-p2/
+
+https://www.gocit.vn/bai-viet/linux-firewall-cluster-pacemaker-corosync/
+
+--------------
+
+Cluster command:
+
+https://wiki.clusterlabs.org/wiki/Example_configurations

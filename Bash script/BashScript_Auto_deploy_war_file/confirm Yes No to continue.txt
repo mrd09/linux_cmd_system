@@ -1,0 +1,27 @@
+https://www.shellhacks.com/yes-no-bash-script-prompt-confirmation/
+
+Method 1:
+The best way to prompt for a confirmation to continue in a bash script is to use the read command (source):
+
+read -p "Did you check the ls result? If yes I will continue to rm all? " -n 1 -r
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
+
+-n option to read to accept one character without the need to press Enter. You can use one or both of these.
+-r		do not allow backslashes to escape any characters
+
+__________________________________________
+
+Method 2: Should you this way:
+
+   while true; do
+    read -p "Did you check the ls result? If yes I will continue to rm all? ?" yn
+    case $yn in
+        [Yy]* ) rm -rf /castis/bin/CMSAdmin/cms/*;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+   done

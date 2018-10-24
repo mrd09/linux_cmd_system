@@ -1,0 +1,43 @@
+----------- UPLOAD FILE TO SERVER --------------------
+
+[root@TESTBED-VOD-CMS sdp]# curl -u adi:adi -T "{/home/adi/sdp/20180417100000_5_2573_A.jpg,/home/adi/sdp/20180417100000_5_2573_B.jpg}" ftp://10.60.70.224/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 12938    0     0  100 12938      0   495k --:--:-- --:--:-- --:--:--     0
+100 12938    0     0  100 12938      0   9.8M --:--:-- --:--:-- --:--:--  9.8M
+[root@TESTBED-VOD-CMS sdp]# curl -u adi:adi -l ftp://10.60.70.224
+176739_A.jpg
+176741_A.jpg
+176742_B.jpg
+176786_A.jpg
+176787_B.jpg
+20180417100000_5_2573_A.jpg
+20180417100000_5_2573_B.jpg
+RESULT
+[root@TESTBED-VOD-CMS sdp]# curl -u adi:adi -T "{/home/adi/sdp/OFFER-59119-9.xml}" ftp://10.60.70.224/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+101  7196    0     0  101  7196      0   266k --:--:-- --:--:-- --:--:--     0
+[root@TESTBED-VOD-CMS sdp]# curl -u adi:adi -l ftp://10.60.70.224
+176739_A.jpg
+176741_A.jpg
+176742_B.jpg
+176786_A.jpg
+176787_B.jpg
+20180417100000_5_2573_A.jpg
+20180417100000_5_2573_B.jpg
+OFFER-59119-9.xml
+RESULT
+
+------------ DOWNLOAD FILE TO SERVER ------------
+
+curl -u adi:adi 'ftp://10.60.70.224/RESULT/ERROR/2018-04-26/OFFER-59119-8-1524716221630.xml' -o /home/dath/OFFER-59119-8-1524716221630.xml
+
+-------------- SHOW FILE in REMOTE FTP SERVER -----------
+[root@TESTBED-VOD-CMS sdp]# curl -u adi:adi -l ftp://10.60.70.224/RESULT/ERROR/2018-04-26/
+OFFER-59119-8-1524716221630.xml
+OFFER-59119-9-1524725291626.xml
+
+
+
+

@@ -1,0 +1,33 @@
+_______________________________________
+
+SHELL vs BASH
+_______________________________________
+
+*The shell	     + is a program that takes keyboard commands 
+	     + and passes them to the operating system to carry out. 
+
+*Almost all Linux distributions supply a shell program from the GNU Project called BASH. 
+
+The name “bash” is an acronym for “Bourne Again SHell”, a reference to the fact bash is an enhanced replacement for sh, the original Unix shell program written by Steve Bourne
+
+----Example----
+
+[me@linuxbox ~]$
+	This is called a shell prompt and it will appear whenever the shell is ready to accept input. 
+
+it will usually include your username@machinename, followed by the current working directory
+(more about that in a little bit) and a dollar sign.
+
+
+If the last character of the prompt is a pound sign (“#”) rather than a $ sign, the terminal session has superuser privileges. 
+=>> This means either we are logged in as the root user or we selected a terminal emulator that provides superuser (administrative) privilege
+_______________________________________
+
+Terminal Emulators
+_______________________________________
+
+When using a graphical user interface, we need another program called a terminal emulator to interact with the shell
+
+KDE uses konsole and GNOME uses gnome-terminal
+
+=>> There are a number of other terminal emulators available for Linux, but they all basically do the same thing; give us access to the shell

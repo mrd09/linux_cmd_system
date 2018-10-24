@@ -1,0 +1,18 @@
+WAN
+MAC Address:    18-A6-F7-9A-F7-11
+IP Address: 27.72.88.40 PPPoE(Connect Automatically)
+Subnet Mask:    255.255.255.255  
+Default Gateway:    27.72.88.40  
+DNS Server: 203.113.131.2 , 203.113.131.3
+
+
+LAN: 192.168.0.126/24
+
+
+Config in modem: TP-Link: admin-51116354
+- Port forwarding:
+ID	Service Port	Internal Port	IP Address		Protocol	Status	Modify
+1	1509			22				192.168.0.126	All			Enabled	Modify Delete
+
+From outside internet:
+- create session ssh to: 27.72.88.40:1509

@@ -1,0 +1,15 @@
+Compress:
+
+files:
+	
+	zip squash.zip file1 file2 file3
+
+or to zip a directory
+
+	zip -r squash.zip dir1
+
+Unzip:
+	unzip 
+	unzip to different folder: unzip file.zip -d xxx will extract files to directory xxx, and xxx will be created if it is not there. 
+		unzip perf_test.zip -d perf_test_2018/
+

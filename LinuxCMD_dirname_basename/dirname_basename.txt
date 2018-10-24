@@ -1,0 +1,7 @@
+- Get the directory without the fileName
+[root@TESTBED-VOD-CMS 176860]# dirname /NAS_INGEST01/cms/repository/asset/201804/176860/176860_4.m3u8
+/NAS_INGEST01/cms/repository/asset/201804/176860
+
+- Get the fileName without directory
+[root@TESTBED-VOD-CMS 176860]# basename /NAS_INGEST01/cms/repository/asset/201804/176860/176860_4.m3u8
+176860_4.m3u8

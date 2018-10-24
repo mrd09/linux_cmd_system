@@ -1,0 +1,4 @@
+curl -H 'Content-Type: application/json' -X POST -d '{"username": "dtthtdas45", "password": "123456"}' http://172.23.32.9:18080/CMSAdmin/acms-interface/epg/reportOfWatchableProgram.do
+
+
+curl -H 'Content-Type: application/json' -X POST -d '{"programList" : [{"channelID" : "201", "deviceType" : "OTT", "eventID" : "542", "filename" : "20180925190000_201_542.m3u8", "range" : "epochtime=1537902000-1537905600"}], "version" : 1}' http://10.60.70.200:18084/CMSAdmin/acms-interface/epg/reportOfWatchableProgram.do

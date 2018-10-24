@@ -1,0 +1,28 @@
+Usage Example:
+
+$ cat data.txt 
+aaaaaa
+aaaaaa
+cccccc
+aaaaaa
+aaaaaa
+bbbbbb
+$ cat data.txt | uniq
+aaaaaa
+cccccc
+aaaaaa
+bbbbbb
+$ cat data.txt | sort | uniq
+aaaaaa
+bbbbbb
+cccccc
+$
+
+----------------------------------
+Real case using
+
+cd /home/vt_admin/ ; cat onme_android_glb.txt | grep 27.67.185.234 | cut -d ',' -f8 |  sort | uniq
+"Changed RealVODIP (27.67.50.70)=>(27.67.50.99)
+"Changed RealVODIP (27.67.50.74)=>(27.67.50.103)
+"Changed RealVODIP (27.67.50.76)=>(27.67.50.105)
+"Changed RealVODIP (27.67.50.78)=>(27.67.50.107)

@@ -1,0 +1,20 @@
+list_checking:
+
+[root@CMS-OPER-02 vt_admin]# mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -s -Dcms -e "select contentAssetId,contentSubsetId,fileName,stageCode from contentasset where stageCode='75' and fileName like '/NAS_INGEST02/%.m3u8';"
+
+296242	218903	/NAS_INGEST02/cms/repository/asset/201804/218903/218903_4.m3u8	75
+296250	218909	/NAS_INGEST02/cms/repository/asset/201804/218909/218909_4.m3u8	75
+
+
+assetId=
+subsetId=
+OTT
+OTT_Folder
+
+ls /NAS_INGEST02/cms/repository/asset/201804/218903/ | grep subsetId
+=> empty 
+	=> check in /NAS_INGEST01 => save result in file A.temp
+		=> empty => this OTT file has gone => OTT_gone.log
+		=> not empty => update DB: contentasset: fileName to current filePath: NAS_INGEST01
+		
+=> not empty => keep still, run to check next subsetId

@@ -1,0 +1,181 @@
+[vt_admin@CMS-OPER-01 ~]$ rpm -qa | grep coro
+corosynclib-devel-1.4.1-17.el6_5.1.x86_64
+corosynclib-1.4.1-17.el6_5.1.x86_64
+corosync-1.4.1-17.el6_5.1.x86_64
+
+[vt_admin@CMS-OPER-01 ~]$ rpm -qR corosync
+/bin/bash  
+/bin/sh  
+/bin/sh  
+/bin/sh  
+/sbin/chkconfig  
+/sbin/chkconfig  
+/usr/sbin/useradd  
+config(corosync) = 1.4.1-17.el6_5.1
+corosynclib = 1.4.1-17.el6_5.1
+libc.so.6()(64bit)  
+libc.so.6(GLIBC_2.2.5)(64bit)  
+libc.so.6(GLIBC_2.3)(64bit)  
+libc.so.6(GLIBC_2.3.4)(64bit)  
+libc.so.6(GLIBC_2.4)(64bit)  
+libcfg.so.4()(64bit)  
+libcfg.so.4(COROSYNC_CFG_0.82)(64bit)  
+libconfdb.so.4()(64bit)  
+libconfdb.so.4(COROSYNC_CONFDB_1.0)(64bit)  
+libcoroipcc.so.4()(64bit)  
+libcoroipcs.so.4()(64bit)  
+libcpg.so.4()(64bit)  
+libcpg.so.4(COROSYNC_CPG_1.0)(64bit)  
+libdbus-1.so.3()(64bit)  
+libdl.so.2()(64bit)  
+libdl.so.2(GLIBC_2.2.5)(64bit)  
+liblogsys.so.4()(64bit)  
+libnetsnmp.so.20()(64bit)  
+libpload.so.4()(64bit)  
+libpload.so.4(COROSYNC_PLOAD_1.0)(64bit)  
+libpthread.so.0()(64bit)  
+libpthread.so.0(GLIBC_2.2.5)(64bit)  
+libquorum.so.4()(64bit)  
+libquorum.so.4(COROSYNC_QUORUM_1.0)(64bit)  
+librt.so.1()(64bit)  
+librt.so.1(GLIBC_2.2.5)(64bit)  
+libtotem_pg.so.4()(64bit)  
+libvotequorum.so.4()(64bit)  
+libvotequorum.so.4(COROSYNC_VOTEQUORUM_1.0)(64bit)  
+rpmlib(CompressedFileNames) <= 3.0.4-1
+rpmlib(FileDigests) <= 4.6.0-1
+rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+rtld(GNU_HASH)  
+rpmlib(PayloadIsXz) <= 5.2-1
+
+---------------------------
+
+[vt_admin@CMS-OPER-01 ~]$ rpm -qa | grep pacemaker
+pacemaker-cts-1.1.10-14.el6_5.1.x86_64
+pacemaker-libs-1.1.10-14.el6_5.1.x86_64
+pacemaker-cluster-libs-1.1.10-14.el6_5.1.x86_64
+pacemaker-1.1.10-14.el6_5.1.x86_64
+pacemaker-cli-1.1.10-14.el6_5.1.x86_64
+
+[vt_admin@CMS-OPER-01 ~]$ rpm -qR pacemaker
+/bin/bash  
+/bin/sh  
+/bin/sh  
+/bin/sh  
+/usr/bin/perl  
+config(pacemaker) = 1.1.10-14.el6_5.1
+corosync  
+libbz2.so.1()(64bit)  
+libc.so.6()(64bit)  
+libc.so.6(GLIBC_2.2.5)(64bit)  
+libc.so.6(GLIBC_2.3)(64bit)  
+libc.so.6(GLIBC_2.3.4)(64bit)  
+libc.so.6(GLIBC_2.4)(64bit)  
+libcfg.so.4()(64bit)  
+libcfg.so.4(COROSYNC_CFG_0.82)(64bit)  
+libcib.so.3()(64bit)  
+libcman.so.3()(64bit)  
+libconfdb.so.4()(64bit)  
+libconfdb.so.4(COROSYNC_CONFDB_1.0)(64bit)  
+libcoroipcc.so.4()(64bit)  
+libcpg.so.4()(64bit)  
+libcrmcluster.so.4()(64bit)  
+libcrmcommon.so.3()(64bit)  
+libcrmservice.so.1()(64bit)  
+libdl.so.2()(64bit)  
+libfenced.so.3()(64bit)  
+libgio-2.0.so.0()(64bit)  
+libglib-2.0.so.0()(64bit)  
+libgmodule-2.0.so.0()(64bit)  
+libgnutls.so.26()(64bit)  
+libgnutls.so.26(GNUTLS_1_4)(64bit)  
+libgobject-2.0.so.0()(64bit)  
+libgthread-2.0.so.0()(64bit)  
+liblrmd.so.1()(64bit)  
+libltdl.so.7()(64bit)  
+libncurses.so.5()(64bit)  
+libpam.so.0()(64bit)  
+libpam.so.0(LIBPAM_1.0)(64bit)  
+libpe_rules.so.2()(64bit)  
+libpe_status.so.4()(64bit)  
+libpengine.so.4()(64bit)  
+libpthread.so.0()(64bit)  
+libpthread.so.0(GLIBC_2.2.5)(64bit)  
+libqb > 0.11.0
+libqb.so.0()(64bit)  
+librt.so.1()(64bit)  
+libstonithd.so.2()(64bit)  
+libtransitioner.so.2()(64bit)  
+libuuid.so.1()(64bit)  
+libxml2.so.2()(64bit)  
+libxml2.so.2(LIBXML2_2.4.30)(64bit)  
+libxslt.so.1()(64bit)  
+pacemaker-cli = 1.1.10-14.el6_5.1
+pacemaker-cluster-libs = 1.1.10-14.el6_5.1
+pacemaker-libs = 1.1.10-14.el6_5.1
+perl(Getopt::Long)  
+python >= 2.4
+resource-agents  
+rpmlib(CompressedFileNames) <= 3.0.4-1
+rpmlib(FileDigests) <= 4.6.0-1
+rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+rtld(GNU_HASH)  
+rpmlib(PayloadIsXz) <= 5.2-1
+
+###### Centos 7
+
+--------- pacemaker
+
+pacemaker-1.1.18-11.el7.x86_64.rpm
+Description
+pacemaker - Scalable High-Availability cluster resource manager
+
+Property	Value
+Distribution	CentOS 7
+Repository	CentOS x86_64
+Package name	pacemaker
+Package version	1.1.18
+Package release	11.el7
+Package architecture	x86_64
+
+---------- corosync
+
+corosync-2.4.3-2.el7.x86_64.rpm
+Description
+corosync - The Corosync Cluster Engine and Application Programming Interfaces
+
+Property	Value
+Distribution	CentOS 7
+Repository	CentOS x86_64
+Package name	corosync
+Package version	2.4.3
+Package release	2.el7
+Package architecture	x86_64
+
+####### Centos 6
+
+pacemaker-1.1.18-3.el6.x86_64.rpm
+Description
+pacemaker - Scalable High-Availability cluster resource manager
+
+Property	Value
+Distribution	CentOS 6
+Repository	CentOS x86_64
+Package name	pacemaker
+Package version	1.1.18
+Package release	3.el6
+Package architecture	x86_64
+
+-----------
+
+corosync-1.4.7-6.el6.x86_64.rpm
+Description
+corosync - The Corosync Cluster Engine and Application Programming Interfaces
+
+Property	Value
+Distribution	CentOS 6
+Repository	CentOS x86_64
+Package name	corosync
+Package version	1.4.7
+Package release	6.el6
+Package architecture	x86_64

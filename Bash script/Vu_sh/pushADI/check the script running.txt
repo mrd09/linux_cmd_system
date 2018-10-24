@@ -1,0 +1,111 @@
+
+
+[root@TESTBED-VOD-CMS pushSDP]# bash -x pushSDP.sh 
+
++ dbIp=10.60.70.200
++ dbUser=root
++ dbPw=castis
++ db=cms_4k
++ sdpIp=10.60.70.200
++ sdpUser=adi
++ sdpPw=adi
++ adiFolder=/home/dath/pushSDP/adiFile
+++ date +%F-%H%M%S
++ homeFolder=/home/dath/pushSDP/2017-12-07-093734
++ processingAdi=/home/dath/pushSDP/2017-12-07-093734/processing
++ bakFolder=ADI_BACKUP
++ limit=100
++ mkdir -p /home/dath/pushSDP/2017-12-07-093734/ADI_BACKUP
++ errorLog=/home/dath/pushSDP/2017-12-07-093734/error.log
++ cp -r /home/dath/pushSDP/adiFile /home/dath/pushSDP/2017-12-07-093734/processing
++ echo '====================================COLLECTING INFORMATION============================================='
+====================================COLLECTING INFORMATION=============================================
++ mysql -uroot -pcastis -N cms_4k -h 10.60.70.200 -e 'select contentasset.fileName , offer.offerId from offer inner join offercontentgroup on offer.offerId = offercontentgroup.offerId and offer.stageCode = 85 inner join contentgroup on contentgroup.contentGroupId = offercontentgroup.contentGroupId inner join postergroup on postergroup.contentGroupId = contentgroup.contentGroupId inner join contentasset on contentasset.contentSubsetId = postergroup.posterSubsetId;'
++ mysql -uroot -pcastis -N cms_4k -h 10.60.70.200 -e 'select contentasset.fileName , offer.offerId from offer inner join offercontentgroup on offer.offerId = offercontentgroup.offerId and offer.stageCode = 85 inner join contentgroup on contentgroup.contentGroupId = offercontentgroup.contentGroupId and contentgroup.seriesId is not null inner join postergroup on contentGroup.seriesId =postergroup.seriesId inner join contentasset on contentasset.contentSubsetId = postergroup.posterSubsetId;'
++ [[ 0 -ne 0 ]]
+++ date '+%F %H:%M:%S'
++ echo '[INFO-2017-12-07 09:37:37] Successfully get data from CMS database.'
+[INFO-2017-12-07 09:37:37] Successfully get data from CMS database.
++ echo '=====================================PUSH ADI FILE VIA FTP============================================='
+=====================================PUSH ADI FILE VIA FTP=============================================
+++ cat /home/dath/pushSDP/2017-12-07-093734/result.txt
+++ awk '{print $2}'
+++ sort
+++ uniq
+++ wc -l
++ totalNumber=44845
++ startCount=0
++ exceedLimit=false
+++ cat /home/dath/pushSDP/2017-12-07-093734/result.txt
+++ awk '{print $2}'
+++ sort
+++ uniq
+
++ for offer in '`cat ${homeFolder}/result.txt | awk '\''{print $2}'\'' | sort | uniq`'
+++ curl ftp://10.60.70.200 --user adi:adi
+++ grep -c OFFER
++ [[ 0 -gt 100 ]]
++ false
++ startCount=1
+
+++ date '+%F %H:%M:%S'
++ echo '[INFO-2017-12-07 09:38:42] [1 / 44845 ]  Working on OFFER : 1000.'
+[INFO-2017-12-07 09:38:42] [1 / 44845 ]  Working on OFFER : 1000.
+++ echo 1000
+++ sed -e 's/[[:space:]]*$//g'
++ offer=1000
+++ ls /home/dath/pushSDP/2017-12-07-093838/processing
+++ grep -c OFFER-1000-
++ [[ 0 -ne 1 ]]
+++ date '+%F %H:%M:%S'
++ echo '[ERROR-2017-12-07 09:38:42] ADI File for: 1000 NOT Existed.'
+[ERROR-2017-12-07 09:38:42] ADI File for: 1000 NOT Existed.
+
+++ date '+%F %H:%M:%S'
++ echo '[ERROR-2017-12-07 09:38:42] OfferID : 1000. Reason: ADI file NOT Existed.'
++ continue
++ for offer in '`cat ${homeFolder}/result.txt | awk '\''{print $2}'\'' | sort | uniq`'
+++ curl ftp://10.60.70.200 --user adi:adi
+++ grep -c OFFER
++ [[ 0 -gt 100 ]]
++ false
++ startCount=2
+++ date '+%F %H:%M:%S'
++ echo '[INFO-2017-12-07 09:38:42] [2 / 44845 ]  Working on OFFER : 10000.'
+[INFO-2017-12-07 09:38:42] [2 / 44845 ]  Working on OFFER : 10000.
+++ echo 10000
+++ sed -e 's/[[:space:]]*$//g'
++ offer=10000
+++ ls /home/dath/pushSDP/2017-12-07-093838/processing
+++ grep -c OFFER-10000-
++ [[ 1 -ne 1 ]]
++ imagePushSuccess=false
+++ grep -w 10000 /home/dath/pushSDP/2017-12-07-093838/result.txt
+++ awk '{print $1}'
+++ sort
+++ uniq
++ listOfImage='/NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg
+/NAS_INGEST01/cms/repository/asset/201506/28912/28912_A.jpg
+/NAS_INGEST01/cms/repository/asset/201506/28913/28913_D.jpg'
++ for image in '${listOfImage}'
+++ echo /NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg
+++ sed -e 's/[[:space:]]*$//g'
++ image=/NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg
++ pushSdp /NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg
++ filePath=/NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg
++ [[ ! -f /NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg ]]
+++ date '+%F %H:%M:%S'
++ echo '[ERROR-2017-12-07 09:38:42] File /NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg not found.'
+[ERROR-2017-12-07 09:38:42] File /NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg not found.
++ return 2
++ [[ 2 -eq 0 ]]
++ [[ 1 -eq 1 ]]
+
+++ date '+%F %H:%M:%S'
++ echo '[ERROR-2017-12-07 09:38:42] Fail to push Image: /NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg for OfferId: 10000'
+[ERROR-2017-12-07 09:38:42] Fail to push Image: /NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg for OfferId: 10000
+++ date '+%F %H:%M:%S'
++ echo '[ERROR-2017-12-07 09:38:42] OfferID : 10000. Reason: Image failed to push: /NAS_INGEST01/cms/repository/asset/201503/10000/10000_D.jpg.'
++ imagePushSuccess=false
++ break
++ false

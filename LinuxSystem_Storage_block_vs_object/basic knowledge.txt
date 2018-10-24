@@ -1,0 +1,23 @@
+https://www.youtube.com/watch?v=Vl28V5tL3Wg
+
+Block storage:
+- Low level data store as 0 and 1
+- harddrive store data in chunk of block
+
+
+Hard drive =>	Block 1: 101010101010
+				Block 2: 010011010101
+				....
+
+
+- OS(linux, windows) can combine the block together to create the file:
+For ex: a.mpg, b.mp4
+
+- OS dont understand the nature of the file or what in there => this left for application
+
+- For easy locate file, OS store file at the filesystem
+
+
+Object storage:
+- Treat data as Object: has meta about the file, Has ID
+- Store as flat structure: because treat file as an full object not like block storage => highly scalable

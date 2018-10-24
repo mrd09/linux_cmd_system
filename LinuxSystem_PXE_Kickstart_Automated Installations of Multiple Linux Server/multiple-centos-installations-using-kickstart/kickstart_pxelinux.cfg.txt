@@ -1,0 +1,9 @@
+label 5
+menu label ^5) Install RHEL 7 x64 with Local Repo using Kickstart
+kernel vmlinuz
+append initrd=initrd.img inst.ks=ftp://192.168.1.25/pub/anaconda-ks.cfg inst.vnc inst.vncpassword=password
+
+label 5
+menu label ^5) Install CentOS 7 x64 with Local Repo using Kickstart
+kernel vmlinuz
+append initrd=initrd.img inst.ks=ftp://192.168.1.25/pub/anaconda-ks.cfg inst.vnc inst.vncpassword=password

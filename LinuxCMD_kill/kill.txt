@@ -1,0 +1,6 @@
+kill -9 23928
+
+	-9: kill signal
+
+killall CiGFMServer
+	Kill all process with name

@@ -1,0 +1,20 @@
+http://www.enterprisestorageforum.com/storage-technology/object-storage-vs-block-storage.html
+
+We think that Object Storage vs. Block Storage is a timely publication which will help many of the confused users. It is important to understand that, there is no uniform standards for practical comparison of Object Storage or Block Storage services from different vendors as customer. Block storage is as simple as like normal hard drives. In object storage, storage architecture manages data as objects. Both of them have pros & cons, practical suitable fields of usage.
+
+Object Storage vs. Block Storage
+ 
+- Block Storage also known as Block-level storage. Possibly you heard about Network Attached Storage (NAS). We told at the beginning that block storage is as simple as like normal hard drives for easy understanding. 
+	- Network Attached Storage is like many such normal hard drives attached together and connected over the network. 
+- Block Storage usually used to mean the concept where cloud services emulate the behaviour of a traditional block device, such as a physical hard drive. Block storage manages data as blocks within sectors and tracks. Our computers’ file systems manage data as a file hierarchy. 
+
+- Object storage is called object-based storage. This is a data storage architecture which manages data as objects. Each object itself a data with a variable amount of metadata, globally unique identifier. From the above easy discussion, it is clear that the way a Object Storage stores data is not similar to Block Storage.
+
+What is the Need To Go Towards Object Storage vs. Block Storage Comparison?
+ 
+- Block Storage almost the standard if the backend is good. However it is costly, needs to be attached with a server etc. 
+
+- But Object Storage is an easy service which is possible to access via API, like we have a Python script to upload things to HP Cloud OpenStack Swift object storage service. That OpenStack Swift is an example of Object Storage and it is possibly obvious that such way makes a great way for uploading things to the CDNs.
+
+- Block Storage actually superior for works like database backup, attaching to mission-critical applications etc. Block storage can be used with databases, serverside languages like PHP with consistent I/O performance and low-latency connectivity.
+

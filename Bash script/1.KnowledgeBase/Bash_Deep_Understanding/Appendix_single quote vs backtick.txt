@@ -1,0 +1,8 @@
+- In MySQL:
+	'price' (apostrophes or quotes) is a string. It never changes, so the count is always 1.
+
+	`price` (backtics) refers to the column price. So it could be more than 1.
+
+- In Bash:
+	'This is meaning literally like string' : "special characters"(\,*...) are passed over and multiple words are prevented from being split.
+	`Command Substitution`

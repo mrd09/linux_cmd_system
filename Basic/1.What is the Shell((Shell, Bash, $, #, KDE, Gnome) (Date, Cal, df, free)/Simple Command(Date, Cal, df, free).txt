@@ -1,0 +1,39 @@
+[me@linuxbox ~]$ date
+Fri Jan 8 15:09:41 EST 2016
+------------
+
+[me@linuxbox ~]$ cal
+ January 2016
+Su Mo Tu We Th Fr Sa
+ 1 2
+ 3 4 5 6 7 8 9
+10 11 12 13 14 15 16
+17 18 19 20 21 22 23
+24 25 26 27 28 29 30
+31
+
+------------
+___df____
+
+To see the current amount of free space on your disk drives, enter df:
+
+Disk Freespace:
+
+[me@linuxbox ~]$ df
+Filesystem 1K-blocks Used 	Available 	Use% Mounted on
+/dev/sda2 	15115452 	5012392 	9949716 	34% 	/
+/dev/sda5 	59631908 	26545424 	30008432 	47% 	/home
+/dev/sda1 	147764 	17370 	122765 	13% 	/boot
+tmpfs 	256856 	0 	256856 	0% 	/dev/shm
+
+---------------
+____free____
+
+to display the amount of free memory:
+[me@linuxbox ~]$ free
+ 	total 	used 	free 	shared 	buffers 	cached
+Mem: 	513712 	503976 	9736 	0 	5312 	122916
+-/+ buffers/cache: 	375748 	137964
+Swap: 	1052248 	104712 	947536
+
+

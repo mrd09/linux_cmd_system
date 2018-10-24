@@ -1,0 +1,20 @@
+alias ll='ls -l --color=auto'
+
+[root@TESTBED-VOD-CMS webapps]# ll -rth		=> reverse order, time, human readable
+total 115M
+-rw-r--r-- 1 root root 38M Mar 10  2017 cms.war-viettel-1.8.QR1
+-rw-r--r-- 1 root root 38M Mar 10  2017 cms.war-viettel.1.8QR2
+-rw-r--r-- 1 root root 39M Oct  4 11:56 CMSAdmin.war-1.8.0
+
+[root@TESTBED-ADS test]# ll -X			=> sort by extension
+total 96
+-rw-r--r-- 1 root root   155 Jul 17 13:59 1
+-rwxr-xr-x 1 root root 17576 Jun 29 13:17 script.exp
+-rwxr-xr-x 1 root root  1092 Aug 11 11:40 demandRequestId.sh
+-rwxr--r-- 1 root root   145 Jul 10 10:39 encode.sh
+-rwxr-xr-x 1 root root    92 Feb  7  2017 getRegion.sh
+-rwxr-xr-x 1 root root    84 Feb  7  2017 putRegion.sh
+-rw-r--r-- 1 root root   504 Feb  7  2017 putIpRouting.txt
+-rw-r--r-- 1 root root   140 Feb  7  2017 putRegion.txt
+-rw-r--r-- 1 root root   128 Jun 29 15:58 ver1_demandRequestId_3.txt
+-rw-r--r-- 1 root root   128 Jun 29 15:58 ver1_demandRequestId_4.txt

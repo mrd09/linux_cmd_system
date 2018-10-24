@@ -1,0 +1,26 @@
+- Cut example:
+
+[root@TESTBED-VSM 2018-09]# sar -r -s 15:00:00 -e 17:00:00 | cut -d ' ' -f1,2,4
+Linux 2.6.32-358.el6.x86_64 	09/13/2018
+
+03:00:01 PM kbmemused
+03:10:01 PM 
+03:20:01 PM 
+03:30:01 PM 
+03:40:01 PM 12480068
+03:50:01 PM 12814040
+04:00:01 PM 12631764
+04:10:01 PM 12382288
+
+
+- awk example: better than cut
+-F fs
+--field-separator 
+
+[root@TESTBED-VSM 2018-09]# sar -r -s 15:00:00 -e 17:00:00 | awk -F" " '{print $1,$2,$4}'
+Linux 2.6.32-358.el6.x86_64 09/13/2018
+  
+03:00:01 PM kbmemused
+03:10:01 PM 36305224
+03:20:01 PM 36302456
+03:30:01 PM 35646916

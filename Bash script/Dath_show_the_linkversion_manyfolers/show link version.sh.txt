@@ -1,0 +1,6 @@
+#!/bin/bash
+FOLDER=$(ll /castis/bin/ | grep Ci | awk '{print $9}')
+
+for i in $FOLDER;
+do cd /castis/bin/${i} && ll /castis/bin/${i} | grep "\->" | awk '{print $11}'
+;done

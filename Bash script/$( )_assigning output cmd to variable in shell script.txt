@@ -1,0 +1,7 @@
+assigning the output of a command to a variable in a shell script
+	
+
+You can use a $ sign like:
+
+	OUTPUT=$(expression)
+

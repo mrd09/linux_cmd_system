@@ -1,0 +1,11 @@
+How to see default UMASK?
+just type umask and you will get the default UMASK
+	umask
+
+The minimum and maximum UMASK value for a folder is 000 and 777
+
+The minimum and maximum UMASK value for a file is 000 and 666
+
+Why 666 is the maximum value for a file?
+This is because only scripts and binaries should have execute permissions, normal and regular files should have just read and write permissions. 
+Directories require execute permissions for viewing the contents in it, so they can have 777 as permissions.

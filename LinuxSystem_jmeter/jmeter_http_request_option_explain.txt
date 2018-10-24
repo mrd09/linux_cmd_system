@@ -1,0 +1,15 @@
+####  Redirect Automatically vs  Follow Redirect
+
+When you check Redirect Automatically option, JMeter will not consider redirect as separate HTTP request. This in turn may result as lower response time in your overall performance test.
+
+Whereas Follow Redirect option will consider each redirection as separate requests. This may result in comparatively higher response time. This only has any effect if “Redirect Automatically” is not enabled.
+
+To see the difference between these two, record a sample script and run it by checking Redirect Automatically and Follow Redirects option. The second option will generate more requests in your result listener.
+
+#### 	Keep-alive 
+- Keep-alive is an HTTP feature to keep a persistent connection between round trips, so that it does not initiate a new one on every single request. This feature has many benefits, but one of the trade-offs is that it holds resources on the server side and that can be an issue under heavy load.
+
+
+####	Regular Expression Extractor:
+
+	Match No. (0 for Random): You can use -1 to get all the matches.

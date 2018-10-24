@@ -1,0 +1,17 @@
+A=Var
+
+$A = ${A}
+
+when put variable in bracket
+
+It will give the limit to the variable in case:
+
+${A}iii => Variii
+
+$Aiii => understand as finding Variable: Aiii => can not find
+
+
+
+
+
+

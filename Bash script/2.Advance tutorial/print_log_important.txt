@@ -1,0 +1,13 @@
+1. If run directly the bash script in terminal : bash -x script.sh 
+	=> can print log by echo >> test.log
+
+2. If run the script in crontab => use the print_log function:
+
+function print_log {
+	echo "`date +%F_%T` $1" >> $Log_Dir/`date +%F`_backup_ott.log
+}
+
+=> the syntax: print_log "string ..."
+	=> then "string ..." will be replace in $1
+
+print_log "mv ${AssetInstaller_Backup}/${m3u8} ${Repository_1}/${Asset_ID}/"

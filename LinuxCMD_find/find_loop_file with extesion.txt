@@ -1,0 +1,8 @@
+# Find the file with extension: mpg mxf mp4 ts then output to the list.txt
+
+rm -rf list.txt; for i in mpg mxf mp4 ts; do find /NAS_INGEST01/cms/repository/asset -name *.${i} >> list.txt; cat list.txt ;done
+
+a=$(cat list.txt);for i in ${a}; do ls -lrth ${i};done
+
+# remove file size > 0 then recreate the file:
+	file=$(cat list.txt); for i in ${file}; do ls -lrth ${i};if [ -s ${i} ];then rm -rf ${i} & touch ${i};fi ;done

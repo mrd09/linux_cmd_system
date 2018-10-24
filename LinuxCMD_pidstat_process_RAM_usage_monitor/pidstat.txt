@@ -1,0 +1,63 @@
+pidstat - Report statistics for Linux tasks.
+
+pidstat -p `pidof CiLLBServer` -r 2
+check the "RSS"
+
+-> RSS: Ram usage in KB
+-> -p: PID
+-> -r: interval
+
+EXAMPLES
+       pidstat 2 5
+              Display five reports of CPU statistics for every active task in the system at two second intervals.
+
+       pidstat -r -p 1643 2 5
+              Display five reports of page faults and memory statistics for PID 1643 at two second intervals.
+
+       pidstat -T CHILD -r 2 5
+              Display five reports of page faults statistics at two second intervals for the child processes of all tasks in the system. Only child  pro-
+              cesses with non-zero statistics values are displayed.
+
+----------------------------------              
+
+-r
+Report page faults and memory utilization.
+When reporting statistics for individual tasks, the following values are displayed:
+
+	PID
+		The identification number of the task being monitored.
+	minflt/s
+		Total number of minor faults the task has made per second, those which have not required loading a memory page from 	disk.
+	majflt/s
+		Total number of major faults the task has made per second, those which have required loading a memory page from 	disk.
+	VSZ
+		Virtual Size: The virtual memory usage of entire task in kilobytes.
+	RSS
+		Resident Set Size: The non-swapped physical memory used by the task in kilobytes.
+
+	Command
+		The command name of the task.
+
+-u     Report CPU utilization.
+
+              When reporting statistics for individual tasks, the following values are displayed:
+
+              PID
+                     The identification number of the task being monitored.
+
+              %usr
+                     Percentage of CPU used by the task while executing at the user level (application), with or without nice priority.  Note  that  this
+                     field does NOT include time spent running a virtual processor.
+
+              %system
+                     Percentage of CPU used by the task while executing at the system level (kernel).
+
+              %system
+                     Percentage of CPU used by the task while executing at the system level (kernel).
+
+              %guest
+                     Percentage of CPU spent by the task in virtual machine (running a virtual processor).
+
+              %CPU
+                     Total  percentage  of  CPU time used by the task. In an SMP environment, the taskâ€™s CPU usage will be divided by the total number of
+                     CPUâ€™s if option -I has been entered on the command line.

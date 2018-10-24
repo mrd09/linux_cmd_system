@@ -1,0 +1,4 @@
+The ! (Exclamation point) qualifier tells Vim to force the operation. 
+
+For example, if the file was read-only you would use :w! to write it anyway. 
+If the file was modified and you wanted to quit without saving, you would use :q!. :wq! just means force write and quit in one command.

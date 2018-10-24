@@ -1,0 +1,34 @@
+[vt_admin@CMS-OPER-02 ~]$ mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -Dcms -Ns -e "select count(ProgramTitle) from tvodepgadiinfo where ProgramTitle like '%\'%';"
+428
+
+[vt_admin@CMS-OPER-02 ~]$ mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -Dcms -Ns -e "select idx, ProgramTitle from tvodepgadiinfo where ProgramTitle like '%\'%'\G;"
+....
+*************************** 421. row ***************************
+1088261
+Pitchin' in S03 2
+*************************** 422. row ***************************
+1088265
+Pitchin' in S03 3
+*************************** 423. row ***************************
+1088282
+Pitchin' in S03 4
+*************************** 424. row ***************************
+1088286
+Kingin' with Tyga S02 3
+*************************** 425. row ***************************
+1088287
+Kingin' with Tyga S02 4
+*************************** 426. row ***************************
+1088323
+Peggy K's Kitchen Cures
+*************************** 427. row ***************************
+1088326
+The Handmaid's Tale S01
+*************************** 428. row ***************************
+1088333
+The Devil's Violinist
+
+[vt_admin@CMS-OPER-02 ~]$ mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -Dcms -Ns -e "update tvodepgadiinfo set ProgramTitle = REPLACE (ProgramTitle, '\'', '') WHERE ProgramTitle like '%\'%';"
+
+[vt_admin@CMS-OPER-02 ~]$ mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -Dcms -Ns -e "select count(ProgramTitle) from tvodepgadiinfo where ProgramTitle like '%\'%';"
+0

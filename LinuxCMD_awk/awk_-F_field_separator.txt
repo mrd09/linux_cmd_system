@@ -1,0 +1,17 @@
+awk
+	-F: Field separator
+	$0:  $0 is the whole record
+	$1, $2, ...: Position(column) of the record
+
+
+[root@CASTIS-DEV-1 dath]# ls *.sql | awk -F '.sql' '{print $0}'
+cms_1_12_subtitle_not_update.sql
+cms_1_8_2_tvod_testbed.sql
+cms_1_8_2_tvod_testbed_upto_1_12.sql
+Subtitle.sql
+
+[root@CASTIS-DEV-1 dath]# ls *.sql | awk -F '.sql' '{print $1}'
+cms_1_12_subtitle_not_update
+cms_1_8_2_tvod_testbed
+cms_1_8_2_tvod_testbed_upto_1_12
+Subtitle

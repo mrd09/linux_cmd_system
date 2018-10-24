@@ -1,0 +1,22 @@
+------Options And Arguments------
+
+	command -options arguments
+
+~> Also, many commands allow multiple short options to be strung together:
+
+	[me@linuxbox ~]$ ls -alt
+	total 56
+	drwxrwxr-x 2 me me 4096 2007-10-26 17:20 .asdflk
+	drwxrwxr-x 2 me me 4096 2007-10-26 17:20 Desktop
+	drwxrwxr-x 2 me me 4096 2007-10-26 16:20 Documents
+	drwxrwxr-x 2 me me 4096 2007-10-26 15:20 Music
+	drwxrwxr-x 2 me me 4096 2007-10-26 14:20 Pictures
+
+~> Most commands use options consisting of a single character preceded by a dash "-", for example, “-l”,
+ but many commands, including those from the GNU Project, also support long options, consisting of a word preceded by two dashes: "--"
+
+We'll add the long option “--reverse” to reverse the order of the sort:
+	[me@linuxbox ~]$ ls -lt --reverse
+
+
+

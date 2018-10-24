@@ -1,0 +1,14 @@
+whereis command example
+
+	Display ls command location along with man page path:
+	whereis ls
+	Output:
+		ls: /bin/ls /usr/share/man/man1p/ls.1p.gz /usr/share/man/man1/ls.1.gz
+
+type command example
+
+	Find out which command the shell executes:
+	type -a ls
+	Output:
+		ls is aliased to `ls –color=tty’
+		ls is /bin/ls

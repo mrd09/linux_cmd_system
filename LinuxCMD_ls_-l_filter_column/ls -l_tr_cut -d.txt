@@ -1,0 +1,14 @@
+
+One easy way is to add a pass of tr to squeeze any repeated field separators out:
+
+$ ps | egrep 11383 | tr -s ' ' | cut -d ' ' -f 4
+
+[root@TESTBED-VOD-CMS cms-config]# ls -l | grep OFFER
+-rw-rw-r-- 1 root   root      8771 Nov 14 15:52 OFFER-16-12-1510648633034.xml
+-rw-rw-r-- 1 root   root      9597 Nov 14 15:53 OFFER-16-13.xml
+-rw-rw-r-- 1 root   root      9617 Nov 13 17:43 OFFER-17-50.xml
+
+[root@TESTBED-VOD-CMS cms-config]# ls -l | grep OFFER |  tr -s ' ' | cut -d ' ' -f8
+15:52
+15:53
+17:43

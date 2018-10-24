@@ -1,0 +1,5 @@
+grep -rF "59120" /home/dath/script_all/delScript/* 2> /dev/null >> /home/dath/script_all/delScript/7954.txt &
+
+
+[root@TESTBED-VOD-CMS delScript]# find -name "*.txt" -ctime -1 -exec grep -rw "r=7954" {} \;
+#EXT-X-KEY:METHOD=AES-128,URI="https://172.23.49.240:12684/CAB/keyfile?r=7954&t=VOD&p=0"

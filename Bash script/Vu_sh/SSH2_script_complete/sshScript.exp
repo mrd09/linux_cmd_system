@@ -1,0 +1,82 @@
+#!/usr/bin/expect -f
+
+#example of getting arguments passed from command line..
+#not necessarily the best practice for passwords though...
+set server [lindex $argv 0]
+set user [lindex $argv 1]
+set pass [lindex $argv 2]
+set timeout 3
+# exp_internal 1 # Debug option
+# connect to server via ssh, login, and su to root
+send_user "connecting to $server\n"
+spawn ssh $user@$server
+
+#login handles cases:
+#   login with keys (no user/pass)
+#   user/pass
+#   login with keys (first time verification)
+expect {
+  	"> " { 
+	interact 
+	exit 0
+	}
+  	"$ " { 
+	interact 
+	exit 0
+	}
+	"# " { 
+	interact 
+	exit 0
+	}
+	"(yes/no)? " { 
+        send "yes\n"
+ 	 }	
+	"assword:" {
+        send "$pass\n"
+	}
+  	default {
+        send_user "Login failed\n"
+        exit 1
+  	}
+}
+expect {
+        "> " { 
+	interact
+	exit 0
+	 }
+	"$ " { 
+	interact
+	exit 0
+	 }
+        "# " { 
+	interact 
+	exit 0
+	}
+	"assword:" {
+        send "$pass\n"
+	}
+	eof { exit 2 }
+        default {
+        send_user "Login failed\n"
+        exit 1
+        }
+}
+expect {
+        "> " { 
+	interact 
+	exit 0
+	}
+        "$ " {
+	interact
+	exit 0
+	}
+        "# " {
+	interact
+	exit 0
+	}
+	eof { exit 2 }
+	timeout {
+        send_user "Time out\n"
+        exit 1
+        }
+}

@@ -1,0 +1,10 @@
+#Emulate: AssetInstaller Move file OTT from OTT CDN Request Path to AssetInstaller OTT Backup folder
+# - from: system.deployCdnRequestPath.ott=/NAS_INGEST01/cdn/ott_rvod
+# - to  : AssetInstaller_Backup="/NAS_INGEST01/cdn/ott_rvod_backup"
+* * * * * root /NAS_INGEST01/cms/fake/ott_to_AIBackup.sh 2>> /NAS_INGEST01/cms/fake/ottcdn_AIBackup.log
+
+# Live Script move OTT Files from AI_backup back to repository
+# - from: AssetInstaller_Backup="/NAS_INGEST01/cdn/ott_rvod_backup"
+# - to  : Repository="/NAS_INGEST01/cms/repository/asset/*"
+#* * * * * root /NAS_INGEST01/cms/fake/backup.sh 2>> /NAS_INGEST01/cms/fake/AIBackup_OttRepo_error.log
+* * * * * root /NAS_INGEST01/cms/fake/backup_R01.sh 2>> /NAS_INGEST01/cms/fake/AIBackup_OttRepo.log

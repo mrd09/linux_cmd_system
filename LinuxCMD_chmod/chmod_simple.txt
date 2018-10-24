@@ -1,0 +1,40 @@
+***Deeper look at ls ****
+-rw-r--r-- 1 root root 3576296 2007-04-03 11:05 Experience ubuntu.ogg
+
+1. -rw-r--r--  => Access rights to the file( Chapter 9 – Permissions): 
+	+ The first character indicates the type of file
+	=>> a leading dash "-" means a regular file
+	=>> a “d” indicates a directory
+	+ next three characters are the access rights for the file's owner
+	+  next three are for members of the file's group
+	+ the final three are for everyone else
+
+2. 1  => File's number of hard links
+
+3. First "root" =>  The username of the file's owner.
+
+4. Second " root" => The name of the group which owns the file.
+
+5. 32059 => Size of the file in bytes.
+
+6. 2007-04-03 => 11:05 Date and time of the file's last modification.
+
+7. oo-cd-cover.odf => Name of the file.
+
+_____________________________________________
+
+chmod - change file mode bits
+
+The  operator  +  causes  the selected file mode bits to be added to the existing file mode bits of each file; - causes them to be removed
+
+read (r), write (w), execute (or search for directories) (x), execute
+
+derived by adding up the bits with values 4(read), 2(write), and 1(execute).
+
+
+    u stands for user(owner).
+    g stands for group.
+    o stands for others.
+    a stands for all.
+
+EX: chmod u+x

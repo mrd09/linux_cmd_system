@@ -1,0 +1,21 @@
+function print_log {
+                echo "`date +%F_%T` $1" | tee -a $Log_Dir/`date "+%F-%H%M%S"`_cp.log
+}
+
+
+print_log "[INFO]- Copy ${i} finished" - Count ${count}"
+
+------------------------
+
+NAME
+       tee - read from standard input and write to standard output and files
+
+SYNOPSIS
+       tee [OPTION]... [FILE]...
+
+DESCRIPTION
+       Copy standard input to each FILE, and also to standard output.
+
+       -a, --append
+              append to the given FILEs, do not overwrite
+

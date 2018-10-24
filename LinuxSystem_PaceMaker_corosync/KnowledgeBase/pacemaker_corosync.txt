@@ -1,0 +1,5 @@
+Hướng dẫn cấu hình Pacemake + Corosync để HA cho APACHE
+	https://github.com/hoangdh/ghichep-HA/blob/master/Pacemaker_Corosync/1.Huong-dan-cai-dat-Pacemaker-Corosync-cho-Webserver.md#h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-c%E1%BA%A5u-h%C3%ACnh-pacemake--corosync-%C4%91%E1%BB%83-ha-cho-apache
+
+hocchudong _ ghichep-pacemaker-corosync:
+	https://github.com/hocchudong/ghichep-pacemaker-corosync

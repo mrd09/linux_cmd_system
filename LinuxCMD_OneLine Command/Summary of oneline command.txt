@@ -1,0 +1,34 @@
+[vt_admin@HLC-OTT-VOD-H-01 RAM_DISK]$ for file in `ls /RAM_DISK/194_0/`; do echo -n "${file} : ";  /castis/bin/tools/MediaCheck_64 /RAM_DISK/194_0/${file} 2>/dev/null | grep muxrate ; done
+194_0_2763365.mpg : [media info] muxrate: 399938(bps)
+194_0_2763366.mpg : [media info] muxrate: 400336(bps)
+194_0_2763367.mpg : [media info] muxrate: 400100(bps)
+194_0_2763368.mpg : [media info] muxrate: 400488(bps)
+194_0_2763369.mpg : [media info] muxrate: 400013(bps)
+194_0_2763370.mpg : [media info] muxrate: 399983(bps)
+194_0_2763371.mpg : [media info] muxrate: 353(bps)
+194_0_2763372.mpg : [media info] muxrate: 399946(bps)
+194_0_2763373.mpg : [media info] muxrate: 400344(bps)
+194_0_2763374.mpg : [media info] muxrate: 399886(bps)
+194_0_2763375.mpg : [media info] muxrate: 27(bps)
+194_0_2763376.mpg : [media info] muxrate: 400027(bps)
+194_0_2763377.mpg : [media info] muxrate: 400005(bps)
+194_0_2763378.mpg : [media info] muxrate: 354(bps)
+194_0_2763379.mpg : [media info] muxrate: 399953(bps)
+194_0_2763380.mpg : [media info] muxrate: 352(bps)
+194_0_2763381.mpg : [media info] muxrate: 399908(bps)
+194_0_2763382.mpg : [media info] muxrate: 399840(bps)
+
+
+----------------------------------
+
+
+mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -Dcms -e "UPDATE offer SET stageCode='85' WHERE offerId IN (SELECT offerId FROM offercontentgroup WHERE contentGroupId IN(SELECT contentGroupId FROM contentgroup WHERE movieSubsetId LIKE '%223211%'));"
+
+
+-------------------------------------
+
+
+for i in 74406 70708;do echo `mysql -h172.23.40.6 -ucmsuser -p'castis!cms!@#' -sN -Dcms -e "select contentAssetId, contentSubsetId, fileName, stageCode from contentasset where contentSubsetId IN (select movieSubsetId from contentgroup where contentGroupId IN  (select contentGroupId from offercontentgroup where offerId=${i}));"`; done
+
+301976 223211 /NAS_INGEST02/cms/repository/asset/201804/223211/223211_2.ts 85 301977 223211 /NAS_INGEST01/cms/repository/asset/201804/223211/223211_4.m3u8 85
+287084 212022 /NAS_INGEST02/cms/repository/asset/201804/212022/212022_2.ts 75 287085 212022 /NAS_INGEST01/cms/repository/asset/201804/212022/212022_4.m3u8 60

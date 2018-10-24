@@ -1,0 +1,11 @@
+*** RAM calculate:
+[root@TESTBED-VSM sa]# free -mg
+             total       used       free     shared    buffers     cached
+Mem:            35         34          0          0          0         22
+-/+ buffers/cache:         11         23
+Swap:            9          0          9
+
+First Line: Mem: Total mem 35 = used: 34 + free ~1
+Second line: -/+ cache: 
+	Actually mem used = used 34 - cached 22 = 11
+	Actually free mem = cached 22 + free ~ 1 = 23

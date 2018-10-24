@@ -1,0 +1,7 @@
+* * * * * root /home/vt_admin/createSigMxf.sh
+* * * * * root /home/vt_admin/createSigMp4.sh
+
+#*/10 * * * * root /NAS_INGEST01/cms/fake/backup.sh 2>> /NAS_INGEST01/cms/fake/backup.log
+
+#25May2018
+*/5 * * * * root /NAS_INGEST01/cms/fake/backup_R01.sh 2>> /NAS_INGEST01/cms/fake/backup_R01.log

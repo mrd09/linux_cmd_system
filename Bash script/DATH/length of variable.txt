@@ -1,0 +1,3 @@
+${#offerId}
+
+=> length of variable: offerId: 59112 => length = 5

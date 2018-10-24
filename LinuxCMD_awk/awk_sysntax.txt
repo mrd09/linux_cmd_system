@@ -1,0 +1,53 @@
+awk
+	'{print ..}'
+	-F: Field separator
+	$0:  $0 is the whole record
+	$1, $2, ...: Position(column) of the record
+
+	NF
+		The number of fields in the current input record.
+	
+	NR
+		The total number of input records seen so far.
+	OFS
+		The output field separator, a space by default.
+	ORS
+		The output record separator, by default a newline.
+
+awk Example:
+
+  awk "{print NF}": show how many column
+  awk '{print $7}'	=> print out the value of the seventh column
+  awk '!a[$0]++'	=> eliminate the duplicate value
+	first
+		 a[$0]
+	we look at the value of a[$0] (array a with whole input line ($0) as key).
+	If it does not exist ( ! is negation in test will eval to true)
+		 !a[$0]
+	we print the input line $0 (default action).
+
+	Also, we add one ( ++ ) to a[$0], so next time !a[$0] will evaluate to false.
+
+  awk '{print}' ORS=' '	=> Print the Output with Record Separator Variable
+	=> in this example: seperate by space
+
+  [root@CASTIS-DEV-1 dath]# ls *.sql | awk -F '.sql' '{print $0}'
+  	cms_1_12_subtitle_not_update.sql
+  	cms_1_8_2_tvod_testbed.sql
+  	cms_1_8_2_tvod_testbed_upto_1_12.sql
+  	Subtitle.sql
+  
+  [root@CASTIS-DEV-1 dath]# ls *.sql | awk -F '.sql' '{print $1}'
+	  cms_1_12_subtitle_not_update
+	  cms_1_8_2_tvod_testbed
+	  cms_1_8_2_tvod_testbed_upto_1_12
+	  Subtitle	
+
+  kent$  ls *.zip|awk -F'.zip' '{print "unzip "$0" -d "$1}'
+  	unzip 001.zip -d 001
+  	unzip 002.zip -d 002
+  	unzip 003.zip -d 003
+  	unzip 004.zip -d 004
+  	unzip 005.zip -d 005
+  	unzip 006.zip -d 006
+  	unzip 007.zip -d 007

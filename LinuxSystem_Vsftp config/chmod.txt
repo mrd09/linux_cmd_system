@@ -1,0 +1,2 @@
+chmod -R castis:castis /home/castis/castis /home/castis/temp
+chmod -R 770 /home/castis/castis /home/castis/temp

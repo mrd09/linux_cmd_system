@@ -1,0 +1,61 @@
+This is bash job control
+
+	Use CTL-Z to stop the job.
+
+Then you can type bg to run it in the background, if there's only on job it does exactly that.
+
+If you have more than one you can use jobs to list then and use fg %N and bg %N to the desired effect.
+
+7.2 Job Control Builtins
+
+bg
+ bg [jobspec …]
+Resume each suspended job jobspec in the background, as if it had been started with ‘&’. If jobspec is not supplied, the current job is used. The return status is zero unless it is run when job control is not enabled, or, when run with job control enabled, any jobspec was not found or specifies a job that was started without job control.
+
+fg
+ fg [jobspec]
+Resume the job jobspec in the foreground and make it the current job. If jobspec is not supplied, the current job is used. The return status is that of the command placed into the foreground, or non-zero if run when job control is disabled or, when run with job control enabled, jobspec does not specify a valid job or jobspec specifies a job that was started without job control.
+
+jobs
+ jobs [-lnprs] [jobspec]
+jobs -x command [arguments]
+The first form lists the active jobs. The options have the following meanings:
+
+-l
+List process IDs in addition to the normal information.
+
+-n
+Display information only about jobs that have changed status since the user was last notified of their status.
+
+-p
+List only the process ID of the job’s process group leader.
+
+-r
+Display only running jobs.
+
+-s
+Display only stopped jobs.
+
+-----------------------------------
+
+ubuntu@ip-10-170-59-120:~$ find /usr -name "*.so"
+/usr/lib/python2.7/dist-packages/OpenSSL/crypto.so
+/usr/lib/python2.7/dist-packages/OpenSSL/SSL.so
+/usr/lib/python2.7/dist-packages/OpenSSL/rand.so
+/usr/lib/python2.7/dist-packages/gi/_glib/_glib.so
+/usr/lib/python2.7/dist-packages/gi/_gobject/_gobject.so
+/usr/lib/python2.7/dist-packages/gi/_gi.so
+/usr/lib/python2.7/config/libpython2.7.so
+...
+^Z
+[1]+  Stopped                 find /usr -name 
+
+ubuntu@ip-10-170-59-120:~$ jobs
+[1]+  Stopped                 find /usr -name "*.so"
+
+ubuntu@ip-10-170-59-120:~$ fg %1
+find /usr -name "*.so"
+/usr/lib/php5/20090626+lfs/apc.so   => continue to run the jobs has pause
+/usr/lib/php5/20090626+lfs/memcache.so
+/usr/lib/php5/20090626+lfs/mysql.so
+...

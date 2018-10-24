@@ -1,0 +1,9 @@
+scp File.abc IP:/FilePath
+scp -r /data1/ IP:/FilePath	=> copy /data1
+	-r: Recursively copy entire directories. 
+scp -r /data1/. IP:/FilePath	=> copy all files in /data1 folder
+	-r: Recursively copy entire directories.
+
+scp /path tolocal/file acc@IP:/path to remote/
+
+scp frozen2-lsm-cfg-2018-04-13.zip root@10.60.70.200:/home/vt_admin/

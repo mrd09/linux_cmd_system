@@ -1,0 +1,3 @@
+https://docs.oracle.com/cd/E35328_01/E35336/html/vmcli-script.html
+
+https://docs.oracle.com/cd/E35328_01/E35336/html/index.html

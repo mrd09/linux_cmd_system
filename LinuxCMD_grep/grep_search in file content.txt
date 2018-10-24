@@ -1,0 +1,58 @@
+grep -Pri Search_Term path_to_directory
+
+	-P	: Interpret PATTERN as a Perl regular expression
+	-r	: recersively search
+	rgrep is the same as running grep -r. In this mode, grep will
+	perform its search recursively. If it encounters a directory, it will
+	traverse into that directory and continue searching. (Symbolic links
+	are ignored; if you want to search directories that are symbolically
+	linked, you should use the -R option instead).
+	
+	-i	: perform a case-insensitive
+
+ find /dir/ -name jdbc.properties	=> find file with name
+
+ find / -type f | grep "\.sh$"		=> find file with extension
+ 
+ # find /castis/ -type d | grep Ci	=> find folder
+	/castis/bin/CiDFSServer
+	/castis/bin/CiVODServer
+	/castis/bin/CiADS
+
+ grep -ri "/data*" /castis/bin/		=> search in content
+	-i : case-insensitive
+	-r : recursive
+ grep -nrw /castis/bin -e string	=> search in content
+
+ grep -ic "benjamin" /etc/passwd	'=> search with case-insensitive and count the results (combine with if)
+ The grep -ic command tells grep to look for the string and be case insensitive, and to count the results. 
+	'=>This is a simple and fast way of checking whether a string exists within a file and if it does perform some action.
+ grep -w abc /etc/	=> search exactly string
+	[root@GFM-OTT CiADS]# netstat -tulpn | grep CiADS | grep LISTEN
+	tcp        0      0 172.16.32.1:18911           0.0.0.0:*                   LISTEN      7087/./CiADS        
+	tcp        0      0 0.0.0.0:18904               0.0.0.0:*                   LISTEN      6998/./CiADSControl 
+	 
+	[root@GFM-OTT CiADS]# netstat -tulpn | grep -w CiADS | grep LISTEN
+	tcp        0      0 172.16.32.1:18911           0.0.0.0:*                   LISTEN      7087/./CiADS
+
+ grep to put all output in the same line and space
+	netstat -tulpn | grep CiADS | grep LISTEN | awk '{print $7}' | cut -d '/' -f1 | tr '\n' ' '
+    or  netstat -tulpn | grep CiADS | grep LISTEN | awk '{print $7}' | cut -d '/' -f1 | awk '{print}' ORS=' '
+	19294 19299
+   About: tr can only handle single character translations. You could use awk to change the output record separator like	
+
+ egrep -o, --only-matching
+              Print only the matched (non-empty) parts of a matching line, with each such part on a separate output line.
+
+-------------------------
+word have underscore the -w option can not work
+Fail case:
+# grep -w 11665 /home/dath/pushSDP/2017-12-14-144153/result.txt | awk '{print $1}' | sort | uniq
+	/NAS_INGEST01/cms/repository/asset/201504/11665/11665_A.jpg
+	/NAS_INGEST01/cms/repository/asset/201507/33898/33898_A.jpg
+	/NAS_INGEST01/cms/repository/asset/201507/33899/33899_D.jpg
+
+Wright case
+# grep -w 11665$ /home/dath/pushSDP/2017-12-14-160941/result.txt | awk '{print $1}' | sort | uniq
+	/NAS_INGEST01/cms/repository/asset/201507/33898/33898_A.jpg
+	/NAS_INGEST01/cms/repository/asset/201507/33899/33899_D.jpg

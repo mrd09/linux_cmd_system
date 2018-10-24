@@ -1,0 +1,17 @@
+Removing MySQL (only when it is installed)
+
+I recommend to completely remove any old MySQL server versions that might be installed on the system and then upgrade to MariaDB without conflicts. 
+
+To check whether MySQL is already installed, execute the command:
+
+	rpm -qa 'mysql*'
+
+If necessary, you can remove found MySQL packages before installing MariaDB by using the following commands:
+
+	yum list installed | grep mysql
+
+	yum remove mysql-client mysql-server mysql-common mysql-devel
+
+And remove the MySQL databases:
+
+	rm -Rf /var/lib/mysql

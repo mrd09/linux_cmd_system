@@ -1,0 +1,25 @@
+Linux process memory usage: How to sort ‘ps’ command output
+
+--sort argument, and that argument takes a number of key values, and those keys indicate how you want to support the ps output.
+
+- Sort Linux ‘ps’ output by memory (RAM), from high to low
+	ps aux --sort -rss
+
+
+- sort ‘ps’ output by pid
+	ps aux --sort -pid
+
+
+CODE       HEADER   DESCRIPTION
+rss        RSS      resident set size, the non-swapped physical memory that a task has used (in kiloBytes).
+vsz        VSZ      virtual memory size of the process in KiB (1024-byte units). Device mappings are currently excluded; 
+
+- To see every process on the system using standard syntax:
+    ps -e
+    ps -ef
+    ps -eF
+    ps -ely
+
+- To see every process on the system using BSD syntax:
+    ps ax
+    ps axu

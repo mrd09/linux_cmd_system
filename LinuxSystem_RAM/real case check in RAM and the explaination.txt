@@ -1,0 +1,95 @@
+https://www.linuxatemyram.com/
+
+Hi Yang, I want to ask about the GLB memory leak issue: 
+
++ Pre: I set up for test GLB with TPS: ~ 320
+
+This is the result:
+[root@TESTBED-VSM sa]# sar -r -s 17:40:00 -e 23:40:00
+Linux 2.6.32-358.el6.x86_64 (TESTBED-VSM)    09/05/2018    _x86_64_   (8 CPU)
+
+kbmemfree kbmemused  %memused kbbuffers  kbcached  kbcommit   %commit
+05:50:01 PM  15929824  21017700     56.89    693828   8858708  14899276     31.41
+....
+11:30:02 PM    325332  36622192     99.12    679516  24068216  14325100     30.20
+
+from around 05:50:01 PM :
+[root@TESTBED-VSM dath]# free -mg
+             total       used       free     shared    buffers     cached
+Mem:            35         20         14          0          0          8
+-/+ buffers/cache:         10         24
+Swap:            9          0          9
+
+to 11:30:02 PM
+[root@TESTBED-VSM sa]# free -mg
+             total       used       free     shared    buffers     cached
+Mem:            35         34          0          0          0         22
+-/+ buffers/cache:         11         23
+Swap:            9          0          9
+
+------------
+Q: I dont know if this is the memory leak or not?
+Because as I see the free memory use all for cache
+
+A: Close case: https://www.linuxatemyram.com/
+- it's linux kernel memory management rule.
+- What's going on? 
+	Linux is borrowing unused memory for disk caching. This makes it looks like you are low on memory, but you are not! Everything is fine!
+- Why is it doing this?
+	Disk caching makes the system much faster and more responsive! There are no downsides, except for confusing newbies. It does not take memory away from applications in any way, ever!
+- What if I want to run more applications?
+	If your applications want more memory, they just take back a chunk that the disk cache borrowed. Disk cache can always be given back to applications immediately! You are not low on ram!
+- Do I need more swap?
+	No, disk caching only borrows the ram that applications don't currently want. It will not use swap. If applications want more memory, they just take it back from the disk cache. They will not start swapping
+- How do I stop Linux from doing this?
+	You can't disable disk caching. The only reason anyone ever wants to disable disk caching is because they think it takes memory away from their applications, which it doesn't! Disk cache makes applications load faster and run smoother, but it NEVER EVER takes memory away from them! Therefore, there's absolutely no reason to disable it!
+- Why does top and free say all my ram is used if it isn't?
+	This is just a difference in terminology. Both you and Linux agree that memory taken by applications is "used", while memory that isn't used for anything is "free".
+	
+	But how do you count memory that is currently used for something, but can still be made available to applications?
+	
+	You might count that memory as "free" and/or "available". Linux instead counts it as "used", but also "available":
+
+Memory that is						You'd call it			Linux calls it
+used by applications					Used				Used
+used, but can be made available			Free (or Available)	Used (and Available)
+not used for anything					Free				Free
+- look at "free" column in the "-/+ buffers/cache" row, the free is 23G
+[root@TESTBED-VSM sa]# free -mg
+             total       used       free     shared    buffers     cached
+Mem:            35         34          0          0          0         22
+-/+ buffers/cache:         11         23
+Swap:            9          0          9
+
+- the process usage:
+[root@TESTBED-VSM sa]# pidstat -p 24191 -r 600
+Linux 2.6.32-358.el6.x86_64 (TESTBED-VSM) 	09/06/2018 	_x86_64_	(8 CPU)
+
+03:18:05 PM       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
+03:28:05 PM     24191   1184.93      0.00 1008856  96020   0.26  CiLLBServer
+03:38:05 PM     24191   1180.81      0.00 1008856  96016   0.26  CiLLBServer
+03:48:05 PM     24191   1185.57      0.00 1008856  96004   0.26  CiLLBServer
+
+- When should I start to worry??
+A healthy Linux system with more than enough memory will, after running for a while, show the following expected and harmless behavior:
+	free memory is close to 0
+	used memory is close to total
+	available memory (or "free + buffers/cache") has enough room (let's say, 20%+ of total)
+	swap used does not change
+
+Warning signs of a genuine low memory situation that you may want to look into:
+	available memory (or "free + buffers/cache") is close to zero
+	swap used increases or fluctuates
+	dmesg | grep oom-killer shows the OutOfMemory-killer at work
+
+*** RAM calculate:
+[root@TESTBED-VSM sa]# free -mg
+             total       used       free     shared    buffers     cached
+Mem:            35         34          0          0          0         22
+-/+ buffers/cache:         11         23
+Swap:            9          0          9
+
+First Line: Mem: Total mem 35 = used: 34 + free ~1
+Second line: -/+ cache: 
+	Actually mem used = used 34 - cached 22 = 11
+	Actually free mem = cached 22 + free ~ 1 = 23

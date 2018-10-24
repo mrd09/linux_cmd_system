@@ -1,0 +1,7 @@
+HOST=$(seq -f "172.16.32.%g" -s ' ' 1 13)
+	=> print IP from 1 ->13 in 1 line and divide by space
+
+seq - print a sequence of numbers
+	-f, --format=FORMAT
+              use printf style floating-point FORMAT
+			   There are three different formats: e, f, and g.

@@ -1,0 +1,25 @@
+mysql -u${4} -p${5} -h ${3} -D ${db} -e "
+
+UPDATE contentgroup SET contentgroup.cpId ='${2}' 
+	WHERE contentgroup.contentGroupId IN
+	(SELECT offercontentgroup.contentGroupId FROM offercontentgroup 
+	inner join offer on offer.offerId = offercontentgroup.offerId and offer.offerId='${1}')
+
+;UPDATE offer SET offer.cpId='${2}' 
+	WHERE offer.offerId='${1}'
+	
+;UPDATE series SET series.cpId='${2}' 
+	WHERE series.seriesId IN 
+	(SELECT contentgroup.seriesId FROM contentgroup
+	inner join offercontentgroup on offercontentgroup.contentGroupId = contentgroup.contentGroupId
+	inner join offer on offer.offerId = offercontentgroup.offerId and offer.offerId='${1}')
+	
+;UPDATE nvodrequestmedia SET cpId='${2}'
+	WHERE nvodrequestmedia.contentGroupId IN 
+	(SELECT offercontentgroup.contentGroupId FROM offercontentgroup 
+	inner join offer on offer.offerId = offercontentgroup.offerId and offer.offerId='${1}')
+	
+;UPDATE contentsubset SET cpId='${2}'
+	WHERE contentsubset.contentSubsetId IN (SELECT contentgroup.movieSubsetId FROM contentgroup
+	inner join offercontentgroup on offercontentgroup.contentGroupId = contentgroup.contentGroupId
+	inner join offer on offer.offerId = offercontentgroup.offerId and offer.offerId='${1}');"

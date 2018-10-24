@@ -1,0 +1,4 @@
+
+scp acc@IP:/path/file /path/to/put/file/in/local/server
+
+scp vt_admin@10.60.69.150:/home/vt_admin/frozen2-lsm-cfg-2018-04-13.zip /home/vt_admin/

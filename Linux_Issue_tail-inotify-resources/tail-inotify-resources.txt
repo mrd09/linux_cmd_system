@@ -1,0 +1,9 @@
+http://peter-butkovic.blogspot.com/2013/08/tail-inotify-resources-exhausted.html
+
+cat /proc/sys/fs/inotify/max_user_watches
+
+sh -c 'echo 1048576 > /proc/sys/fs/inotify/max_user_watches'
+cat /proc/sys/fs/inotify/max_user_watches
+
+vim /etc/sysctl.conf
+	fs.inotify.max_user_watches = 1048576 

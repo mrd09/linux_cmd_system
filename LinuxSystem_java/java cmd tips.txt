@@ -1,0 +1,50 @@
+- if use /etc/init.d/tomcat to start tomcat check:
+
+[vt_admin@CMS-OPER-01 ~]$ cat /etc/init.d/tomcat | grep export
+export PATH=$PATH:/usr/local/sbin
+export JAVA_HOME=/usr/java/default
+
+[vt_admin@CMS-OPER-01 ~]$ /usr/java/default/jre/bin/java -version
+java version "1.7.0_60"
+Java(TM) SE Runtime Environment (build 1.7.0_60-b19)
+Java HotSpot(TM) 64-Bit Server VM (build 24.60-b09, mixed mode)
+
+- if dont use /etc/init.d/tomcat to start tomcat check:
+
+[vt_admin@CMS-OPER-01 ~]$ /usr/local/tomcat/bin/catalina.sh version
+Using CATALINA_BASE:   /usr/local/tomcat
+Using CATALINA_HOME:   /usr/local/tomcat
+Using CATALINA_TMPDIR: /usr/local/tomcat/temp
+Using JRE_HOME:        /usr
+Using CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
+Server version: Apache Tomcat/7.0.57
+Server built:   Nov 3 2014 08:39:16 UTC
+Server number:  7.0.57.0
+OS Name:        Linux
+OS Version:     2.6.32-573.18.1.el6.x86_64
+Architecture:   amd64
+JVM Version:    1.7.0_09-icedtea-mockbuild_2013_01_16_18_52-b00
+JVM Vendor:     Oracle Corporation
+
+- How To Switch Java version in Centos
+	- Add the new java to the list of alternatives:											
+		#alternatives --install /usr/bin/java java /usr/java/jdk1.6.0_15/bin/java 2											=> 2: is the number in above list
+
+		#alternatives --config java								
+		There are 2 programs which provide 'java'.								
+		Selection    Command								
+		-----------------------------------------------								
+		*+ 1           /usr/lib/jvm/jre-1.4.2-gcj/bin/java								
+		   2           /usr/java/jdk1.6.0_15/bin/java								
+		Enter to keep the current selection[+], or type selection number: 2								
+
+	- The same thing you should do with for javac:
+		#alternatives --install /usr/bin/javac javac /usr/java/jdk1.6.0_15/bin/javac 2									
+		#alternatives --config javac									
+		There are 2 programs which provide 'javac'.									
+		Selection    Command									
+		-----------------------------------------------									
+		*+ 1           /usr/lib/jvm/java-1.4.2-gcj/bin/javac									
+		   2           /usr/java/jdk1.6.0_15/bin/javac									
+		Enter to keep the current selection[+], or type selection number: 2									
+

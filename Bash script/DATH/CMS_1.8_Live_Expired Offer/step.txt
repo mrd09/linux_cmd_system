@@ -1,0 +1,13 @@
+1. run /home/vt_admin/expiredOffer/expireOffer.sh
+
+2. Export ADI
+- Log in CMS-UI Admin using admin account.
+- After successfully logging in enter this URL in Browser:
+	http://10.60.67.135:18080/CMSAdmin/deploy/generateWholeInServiceOfferAdi2.do?directory=/home/vt_admin/expiredOffer/allOfferExport
+- Wait for the process to finish running
+
+3. Get list of offer need to be sent:
+# /home/vt_admin/expiredOffer/getOffer.sh
+
+4. run push SDP script
+

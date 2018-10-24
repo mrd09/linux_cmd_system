@@ -1,0 +1,10 @@
+Show history command with time, date
+- Temporary method:
+	# HISTTIMEFORMAT="%d/%m/%y %T "
+	# history | grep start
+	136  18/09/17 13:27:56 ./CiLFMServer start
+
+- Permanent method: 
+	$ echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bash_profile
+Use the source command to load HISTTIMEFORMAT from file into the current shell script or a command prompt:
+	$ source ~/.bash_profile

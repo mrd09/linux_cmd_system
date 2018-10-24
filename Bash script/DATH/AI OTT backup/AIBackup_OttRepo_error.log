@@ -1,0 +1,45 @@
++ Log_Dir=/NAS_INGEST01/cms/fake/log
+++ date +%Y%m
++ DATE=201804
++ Repository='/NAS_INGEST01/cms/repository/asset/*'
++ AssetInstaller_Backup=/NAS_INGEST01/cdn/ott_rvod_backup
++ OTT=m3u8
++ print_log =========================================================================================
+++ date +%F_%T
++ echo '2018-04-17_11:00:01 ========================================================================================='
+++ date +%F
+++ date +%F
+/NAS_INGEST01/cms/fake/backup.sh: line 10: /NAS_INGEST01/cms/fake/log/2018-04-17_backup_ott.log: No such file or directory
++ move_ott_file_to_repository
++ print_log '::::::::::move_ott_file_to_repository start::::::::::'
+++ date +%F_%T
++ echo '2018-04-17_11:00:01 ::::::::::move_ott_file_to_repository start::::::::::'
+++ date +%F
+++ date +%F
+/NAS_INGEST01/cms/fake/backup.sh: line 10: /NAS_INGEST01/cms/fake/log/2018-04-17_backup_ott.log: No such file or directory
+++ ls /NAS_INGEST01/cdn/ott_rvod_backup
+++ grep m3u8
++ for m3u8 in '`ls $AssetInstaller_Backup | grep $OTT`'
+++ echo 20180330133500_96_9039.m3u8
+++ cut -d_ -f1
++ Asset_ID=20180330133500
+++ echo 20180330133500_96_9039.m3u8
+++ cut -d. -f1
++ Asset_File=20180330133500_96_9039
++ '[' -f '/NAS_INGEST01/cms/repository/asset/*/20180330133500/20180330133500_96_9039.m3u8' ']'
++ mv /NAS_INGEST01/cdn/ott_rvod_backup/20180330133500_96_9039 '/NAS_INGEST01/cms/repository/asset/*/20180330133500/'
+mv: cannot move `/NAS_INGEST01/cdn/ott_rvod_backup/20180330133500_96_9039' to `/NAS_INGEST01/cms/repository/asset/*/20180330133500/': No such file or directory
++ print_log 'mv /NAS_INGEST01/cdn/ott_rvod_backup/20180330133500_96_9039 /NAS_INGEST01/cms/repository/asset/*/20180330133500/'
+++ date +%F_%T
++ echo '2018-04-17_11:00:01 mv /NAS_INGEST01/cdn/ott_rvod_backup/20180330133500_96_9039 /NAS_INGEST01/cms/repository/asset/*/20180330133500/'
+++ date +%F
+++ date +%F
+/NAS_INGEST01/cms/fake/backup.sh: line 10: /NAS_INGEST01/cms/fake/log/2018-04-17_backup_ott.log: No such file or directory
++ mv /NAS_INGEST01/cdn/ott_rvod_backup/20180330133500_96_9039.m3u8 '/NAS_INGEST01/cms/repository/asset/*/20180330133500/'
+mv: cannot move `/NAS_INGEST01/cdn/ott_rvod_backup/20180330133500_96_9039.m3u8' to `/NAS_INGEST01/cms/repository/asset/*/20180330133500/': No such file or directory
++ print_log 'mv /NAS_INGEST01/cdn/ott_rvod_backup/20180330133500_96_9039.m3u8 /NAS_INGEST01/cms/repository/asset/*/20180330133500/'
+++ date +%F_%T
++ echo '2018-04-17_11:00:01 mv /NAS_INGEST01/cdn/ott_rvod_backup/20180330133500_96_9039.m3u8 /NAS_INGEST01/cms/repository/asset/*/20180330133500/'
+++ date +%F
+++ date +%F
+/NAS_INGEST01/cms/fake/backup.sh: line 10: /NAS_INGEST01/cms/fake/log/2018-04-17_backup_ott.log: No such file or directory

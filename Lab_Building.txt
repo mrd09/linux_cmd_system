@@ -1,0 +1,5 @@
+https://www.pythian.com/blog/setting-up-a-home-learning-lab-2/
+
+https://phoenixts.com/blog/how-to-build-a-virtual-lab-to-hack-computers-legally/
+
+https://www.lisenet.com/2015/setup-linux-home-lab-environment-with-oracle-virtualbox/

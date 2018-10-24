@@ -1,0 +1,8 @@
+cp: cp in same partition: change inode => very fast
+
+cp: cp in different partition: cp time will slower
+
+mv: in same partition:
+	change inode => very fast
+
+mv: in differet partition: cp + delete time will be slower

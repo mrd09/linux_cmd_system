@@ -1,0 +1,14 @@
+  awk "{print NF}": show how many column
+  awk '{print $7}'	=> print out the value of the seventh column
+  awk '!a[$0]++'	=> eliminate the duplicate value
+	first
+		 a[$0]
+	we look at the value of a[$0] (array a with whole input line ($0) as key).
+	If it does not exist ( ! is negation in test will eval to true)
+		 !a[$0]
+	we print the input line $0 (default action).
+
+	Also, we add one ( ++ ) to a[$0], so next time !a[$0] will evaluate to false.
+
+  awk '{print}' ORS=' '	=> Print the Output with Record Separator Variable
+	=> in this example: seperate by space

@@ -1,0 +1,6 @@
+Examine script with:
+
+#bash -x A.sh
+=> Try to find what cause slow time
+
+=> fix script

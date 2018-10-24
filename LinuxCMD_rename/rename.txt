@@ -1,0 +1,4 @@
+rename will rename the specified files by replacing the first occurrence of from in their name by to.
+	rename from to file...
+
+rename .htm .html *.htm

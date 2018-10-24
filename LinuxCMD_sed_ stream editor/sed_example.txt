@@ -1,0 +1,29 @@
+# sed -e 's/cp03user/Mcontent/g' /home/adi/OFFER-331-2.xml
+
+or can use: # sed 's/cp03user/Mcontent/p' /home/adi/OFFER-331-2.xml
+
+-e	:  Print the change before truely edit
+s	:  Substitute command
+
+/../../	  Delimiter
+
+cp03user: search string
+Mcontent: Replacement string
+
+/home/adi/OFFER-331-2.xml: /root/test/test.cfg =>> Path to the file, can be multiple file /Path1/ /Path2/
+
+/g - Global replacement
+
+/p - Print
+
+
+---------------------
+
+Example:
+[root@TESTBED-VOD-CMS webapps]# grep -w "File" CMSAdmin/WEB-INF/classes/log4j.xml | grep -v '\$'
+		<param name="File" value="/castis/bin/tomcat_cms_onme/logs/cms.log" />
+
+ grep -w "File" CMSAdmin/WEB-INF/classes/log4j.xml | grep -v '\$' | sed -e 's/castis/test/g'
+		<param name="File" value="/test/bin/tomcat_cms_onme/logs/cms.log" />
+
+grep -w "File" CMSAdmin/WEB-INF/classes/log4j.xml | grep -v '\$' | sed -i 's/castis/test/g'

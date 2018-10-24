@@ -1,0 +1,74 @@
+<?xml version="1.0" ?>
+<cib admin_epoch="0" cib-last-written="Fri Jan  6 01:13:38 2017" crm_feature_set="3.0.7" dc-uuid="CMS-DB-01" epoch="125" have-quorum="1" num_updates="64" upd
+ate-client="crm_attribute" update-origin="CMS-DB-02" validate-with="pacemaker-1.2">
+  <configuration>
+    <crm_config>
+      <cluster_property_set id="cib-bootstrap-options">
+        <nvpair id="cib-bootstrap-options-dc-version" name="dc-version" value="1.1.10-14.el6_5.1-368c726"/>
+        <nvpair id="cib-bootstrap-options-cluster-infrastructure" name="cluster-infrastructure" value="classic openais (with plugin)"/>
+        <nvpair id="cib-bootstrap-options-expected-quorum-votes" name="expected-quorum-votes" value="2"/>
+        <nvpair id="cib-bootstrap-options-stonith-enabled" name="stonith-enabled" value="false"/>
+        <nvpair id="cib-bootstrap-options-no-quorum-policy" name="no-quorum-policy" value="ignore"/>
+        <nvpair id="cib-bootstrap-options-last-lrm-refresh" name="last-lrm-refresh" value="1482947223"/>
+      </cluster_property_set>
+    </crm_config>
+    <nodes>
+      <node id="CMS-DB-02" uname="CMS-DB-02">
+        <instance_attributes id="nodes-CMS-DB-02">
+          <nvpair id="nodes-CMS-DB-02-standby" name="standby" value="off"/>
+        </instance_attributes>
+      </node>
+      <node id="CMS-DB-01" uname="CMS-DB-01">
+        <instance_attributes id="nodes-CMS-DB-01">
+          <nvpair id="nodes-CMS-DB-01-standby" name="standby" value="off"/>
+        </instance_attributes>
+      </node>
+    </nodes>
+    <resources>
+      <group id="maria">
+        <primitive class="ocf" id="DB_IP" provider="heartbeat" type="IPaddr2">
+          <instance_attributes id="DB_IP-instance_attributes">
+            <nvpair id="DB_IP-instance_attributes-ip" name="ip" value="172.23.40.6"/>
+            <nvpair id="DB_IP-instance_attributes-cidr_netmask" name="cidr_netmask" value="26"/>
+            <nvpair id="DB_IP-instance_attributes-nic" name="nic" value="bond0:1"/>
+          </instance_attributes>
+          <operations>
+            <op id="DB_IP-monitor-10s" interval="10s" name="monitor"/>
+          </operations>
+        </primitive>
+        <primitive class="ocf" id="storage_backup" provider="heartbeat" type="Filesystem">
+          <instance_attributes id="storage_backup-instance_attributes">
+            <nvpair id="storage_backup-instance_attributes-device" name="device" value="/dev/mapper/CMS-DB-BACKUPp1"/>
+            <nvpair id="storage_backup-instance_attributes-directory" name="directory" value="/BACKUP"/>
+            <nvpair id="storage_backup-instance_attributes-fstype" name="fstype" value="xfs"/>
+          </instance_attributes>
+        </primitive>
+        <primitive class="lsb" id="mariaDB" type="mysql">
+          <operations>
+            <op id="mariaDB-monitor-5s" interval="5s" name="monitor" timeout="30s"/>
+            <op id="mariaDB-start-5s" interval="5s" name="start" timeout="40s"/>
+            <op id="mariaDB-stop-5s" interval="5s" name="stop" timeout="60s"/>
+          </operations>
+          <meta_attributes id="mariaDB-meta_attributes">
+            <nvpair id="mariaDB-meta_attributes-target-role" name="target-role" value="Started"/>
+          </meta_attributes>
+        </primitive>
+      </group>
+      <primitive class="ocf" id="storage_data" provider="heartbeat" type="Filesystem">
+        <instance_attributes id="storage_data-instance_attributes">
+          <nvpair id="storage_data-instance_attributes-device" name="device" value="/dev/mapper/CMS-DB-DATA01p1"/>
+          <nvpair id="storage_data-instance_attributes-directory" name="directory" value="/DATA"/>
+          <nvpair id="storage_data-instance_attributes-fstype" name="fstype" value="xfs"/>
+        </instance_attributes>
+      </primitive>
+    </resources>
+    <constraints>
+      <rsc_order first="storage_data" id="mariadb_after_storage" score="INFINITY" then="maria"/>
+    </constraints>
+    <rsc_defaults>
+      <meta_attributes id="rsc-options">
+        <nvpair id="rsc-options-resource-stickiness" name="resource-stickiness" value="100"/>
+      </meta_attributes>
+    </rsc_defaults>
+  </configuration>
+</cib>

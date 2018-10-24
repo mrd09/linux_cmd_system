@@ -1,0 +1,15 @@
+#!/bin/bash
+
+user="cmsuser"
+password="castis!cms!@#"
+dbIp="172.23.40.6"
+dbName="cms"
+
+#Before run script check total record:
+select count(ProgramTitle) from tvodepgadiinfo;
+
+#Check number of record are going to delete:
+select count(ProgramTitle) from tvodepgadiinfo where ValidateStart < CURDATE() - 7;
+
+#Delete old record:
+delete from tvodepgadiinfo where ValidateStart < CURDATE() - 7;

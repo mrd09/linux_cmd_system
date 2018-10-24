@@ -1,0 +1,97 @@
+VOD ONME Copy
+
+We need to download all VODs of CP “Onme” on NAS Storage. Audit company want to get them to audit VOD.
+=> All VODs of CP OnMe, you mean we need to download the content from the very first start of using OnMe
+
+Maybe we can copy all Onme VODs to another region of NAS (one specific folder), then audit company will access on that folder to download them.
+=> Suppose that we can copy the content to specific foler, how 
+
+Could you support us the way to solve this issue?
+
+
+
+OfferId  OfferTitle CpId SubsetID 
+
+
+- Number of offer:
+# mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -e "select count(*) from offer where cpId='ONME'"
++----------+
+| count(*) |
++----------+
+|     6457 |
++----------+
+
+- query get list of offerId:
+mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -e "select offerId, cpId, title from offer where cpId='ONME'"
+offerId cpId    title
+68728   ONME    Test 
+68755   ONME    Sông Lam Nghệ An thua Sanna Khánh Hoà trong trận ra quân tại Vleague 2018
+
+- query of file mp4 or mxf base on above list Offer ID:
+[root@TESTBED-VOD-CMS vt_admin]# for i in 79999;do mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -e "select contentAssetId, contentSubsetId, fileName from contentasset where not fileName like '%.m3u8'  and contentSubsetId IN (select movieSubsetId from contentgroup where contentGroupId IN  (select contentGroupId from offercontentgroup where offerId=${i}));"; done
++----------------+-----------------+---------------------------------------------------------------+
+| contentAssetId | contentSubsetId | fileName                                                      |
++----------------+-----------------+---------------------------------------------------------------+
+|         324099 |          240127 | /NAS_INGEST01/cms/repository/asset/201806/240127/240127_1.mp4 |
++----------------+-----------------+---------------------------------------------------------------+
+
+- Combine:
+
+list=$(mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -sN -e "select offerId from offer where cpId='ONME'");for i in ${list};do mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -e "select contentAssetId, contentSubsetId, fileName from contentasset where not fileName like '%.m3u8'  and contentSubsetId IN (select movieSubsetId from contentgroup where contentGroupId IN  (select contentGroupId from offercontentgroup where offerId=${i}));"; done
+
++----------------+-----------------+---------------------------------------------------------------+
+| contentAssetId | contentSubsetId | fileName                                                      |
++----------------+-----------------+---------------------------------------------------------------+
+|         283307 |          209180 | /NAS_INGEST02/cms/repository/asset/201804/209180/209180_2.mp4 |
++----------------+-----------------+---------------------------------------------------------------+
++----------------+-----------------+---------------------------------------------------------------+
+| contentAssetId | contentSubsetId | fileName                                                      |
++----------------+-----------------+---------------------------------------------------------------+
+|         283311 |          209183 | /NAS_INGEST02/cms/repository/asset/201804/209183/209183_2.mp4 |
++----------------+-----------------+---------------------------------------------------------------+
++----------------+-----------------+---------------------------------------------------------------+
+| contentAssetId | contentSubsetId | fileName                                                      |
++----------------+-----------------+---------------------------------------------------------------+
+|         283315 |          209186 | /NAS_INGEST02/cms/repository/asset/201804/209186/209186_1.mp4 |
++----------------+-----------------+---------------------------------------------------------------+
+
++ List file VOD ONME:
+list=$(mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -sN -e "select offerId from offer where cpId='ONME'");for i in ${list};do mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -sN -e "select fileName from contentasset where not fileName like '%.m3u8'  and contentSubsetId IN (select movieSubsetId from contentgroup where contentGroupId IN  (select contentGroupId from offercontentgroup where offerId=${i}));"; done
+
+/NAS_INGEST01/cms/repository/asset/201804/213469/213469_1.mp4
+/NAS_INGEST01/cms/repository/asset/201804/213472/213472_1.mp4
+/NAS_INGEST02/cms/repository/asset/201804/210187/210187_2.mp4
+
++ Export list file to listFileONME_total.txt:
+list=$(mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -sN -e "select offerId from offer where cpId='ONME'");for i in ${list};do mysql -uroot -pcastis -Dcms_1_8_2_live_upto_1_12 -sN -e "select distinct fileName from contentasset where not fileName like '%.m3u8'  and contentSubsetId IN (select movieSubsetId from contentgroup where contentGroupId IN  (select contentGroupId from offercontentgroup where offerId=${i}));" >> listFileONME_total.txt; done
+
++ Count number of file in listFile.txt:
+[root@TESTBED-VOD-CMS vt_admin]# cat listFileONME_total.txt | wc -l
+6518
+[root@TESTBED-VOD-CMS vt_admin]# cat listFileONME_totaltxt | grep mxf | wc -l
+118
+[root@TESTBED-VOD-CMS vt_admin]# cat listFileONME_total.txt | grep mp4 | wc -l
+6304 
+
++ Export list file exist to listFileONME_exist.txt:
+[root@TESTBED-VOD-CMS vt_admin]# file=$(cat listFileONME_total.txt);for i in ${file} ; do if [[ -f ${i} ]]; then echo `ls -lrt ${i}`;fi;done
+-rwxrwxrwx 1 root root 61859080 Sep 11 10:48 /NAS_INGEST01/cms/repository/asset/201804/213469/213469_1.mp4
+-rw-r--r-- 1 root root 61859080 Sep 11 10:49 /NAS_INGEST01/cms/repository/asset/201804/213472/213472_1.mp4
+
+[root@TESTBED-VOD-CMS vt_admin]# file=$(cat listFileONME_total.txt);for i in ${file} ; do if [[ -f ${i} ]]; then echo `ls -lrt ${i}` >> listFileONME_exist.txt;fi;done
+
++ display capacity of file:
+file=$(cat listFileONME_exist.txt);for i in ${file} ; do echo `ls -lrth ${i}`;done
+-rwxrwxrwx 1 root root 59M Sep 11 10:48 /NAS_INGEST01/cms/repository/asset/201804/213469/213469_1.mp4
+-rw-r--r-- 1 root root 59M Sep 11 10:49 /NAS_INGEST01/cms/repository/asset/201804/213472/213472_1.mp4
+
++ Count the total number of capacity:
+
+[root@TESTBED-VOD-CMS vt_admin]# file2=$(cat listFileONME_exist.txt | cut -d ' ' -f9);for i in ${file2} ; do echo `ls -lrt ${i}` >> usageSpaceOnMe.txt;done
+[root@TESTBED-VOD-CMS vt_admin]# cat usageSpaceOnMe.txt 
+-rwxrwxrwx 1 root root 59M Sep 11 10:48 /NAS_INGEST01/cms/repository/asset/201804/213469/213469_1.mp4
+-rw-r--r-- 1 root root 59M Sep 11 10:49 /NAS_INGEST01/cms/repository/asset/201804/213472/213472_1.mp4
+
+[root@TESTBED-VOD-CMS vt_admin]# cat usageSpaceOnMe.txt | cut -d ' ' -f5 | awk '{sum+=$1} END {print sum/1024/1024}'
+899.294
+

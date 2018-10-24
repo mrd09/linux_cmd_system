@@ -1,0 +1,15 @@
+NAME
+       arp - manipulate the system ARP cache
+
+       -n, --numeric
+              shows numerical addresses instead of trying to determine symbolic host, port or user names.
+
+
+[root@TESTBED-NVOD ~]# arp -n | grep 10.60.70.220
+10.60.70.220             ether   6c:ae:8b:54:a4:d2   C                     eth0
+
+[root@TESTBED-VSM CiGLBServer]# ifconfig eth0:1
+eth0:1    Link encap:Ethernet  HWaddr 6C:AE:8B:54:A4:D2  
+          inet addr:10.60.70.220  Bcast:10.255.255.255  Mask:255.0.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          Memory:bc580000-bc5a0000

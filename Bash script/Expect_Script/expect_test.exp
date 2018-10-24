@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+set timeout 30
+spawn bash -c "/usr/bin/scp /root/env.sh root@192.168.105.93:/home/"
+expect {
+	-re ".*es.*o.*" {
+	  exp_send "yes\r"
+	  exp_continue
+	}
+	-re ".*sword.*" {
+	  exp_send "dat@1234\r"
+	}
+}
+interact

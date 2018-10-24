@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "helloworld"
+
+#echo \"helloworld\"	=> if want special character need to escape by \
+
+chmod
+
+[root@nobody ~]# ./helloworld.sh
+	helloworld
+
+[root@nobody ~]# chmod +x helloworld.sh
+

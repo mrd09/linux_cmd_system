@@ -1,0 +1,4 @@
+[root@TESTBED-VOD-CMS ~]# basename /NAS_INGEST01/cms/encoding/processing_hd/837_21C.m3u8 
+837_21C.m3u8
+[root@TESTBED-VOD-CMS ~]# dirname /NAS_INGEST01/cms/encoding/processing_hd/837_21C.m3u8 
+/NAS_INGEST01/cms/encoding/processing_hd

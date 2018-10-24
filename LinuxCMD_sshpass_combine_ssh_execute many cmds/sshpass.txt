@@ -1,0 +1,6 @@
+sshpass -p 'password' ssh user@host "ls; whois google.com;"
+or
+export SSHPASS=password
+sshpass -e ssh user@host "ls; whois google.com;"
+
+sshpass -v : verbose: will print out the infor

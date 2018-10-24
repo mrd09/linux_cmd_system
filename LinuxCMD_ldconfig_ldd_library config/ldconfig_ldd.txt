@@ -1,0 +1,27 @@
+NAME
+       ldd - print shared library dependencies
+
+[root@TESTBED-VOD-CMS ~]# ldd /castis/bin/tools/MediaVerifier_64
+	linux-vdso.so.1 =>  (0x00007fffda0e4000)
+	libboost_filesystem.so.5 => /castis/lib64/libboost_filesystem.so.5 (0x00007f32b32d7000)
+	libstdc++.so.6 => /usr/lib64/libstdc++.so.6 (0x0000003d25a00000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000003d23e00000)
+	libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x0000003d25600000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00000033d5600000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000003d23200000)
+	libboost_system.so.5 => /castis/lib64/libboost_system.so.5 (0x00007f32b30d2000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000003d22e00000)
+
+
+NAME
+       /sbin/ldconfig - configure dynamic linker run-time bindings
+
+
+
+---------------------------------
+Add more library config
+[root@TESTBED-VOD-CMS ~]# vim /etc/ld.so.conf.d/castis.conf
+/castis/lib/
+/castis/lib64/
+
+[root@TESTBED-VOD-CMS ~]# ldconfig

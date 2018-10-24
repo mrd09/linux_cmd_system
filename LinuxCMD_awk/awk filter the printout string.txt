@@ -1,0 +1,18 @@
+[vt_admin@HLC-OTT-LSM-01 ~]$ cat onme_ios_glb.txt | grep 27.67.41.98 | cut -d ',' -f8
+"Changed RealVODIP (27.67.50.75)=>(27.67.50.104)
+
+-----------------
+Use awk to filter the printout result:
+
+awk '/${seach_pattern}/ {print $1 $2 $3}'
+
+"Changed RealVODIP (27.67.50.75)=>(27.67.50.104)
+=> "Changed	:	$1
+=> RealVODIP	:	$2
+=> (27.67.50.75)=>(27.67.50.104)	:	$3
+
+[vt_admin@HLC-OTT-LSM-01 ~]$ cat onme_ios_glb.txt | grep 27.67.41.98 | cut -d ',' -f8 | awk '/Changed/ {print $3}' | sort | uniq
+(27.67.50.68)=>(27.67.50.97)
+(27.67.50.70)=>(27.67.50.99)
+...
+

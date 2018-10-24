@@ -1,0 +1,1 @@
+awk '{total += $1} END {print total/NR}' /DATA05/result_400M/read_raw.txt

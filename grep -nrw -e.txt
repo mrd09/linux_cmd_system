@@ -1,0 +1,14 @@
+[blitz@eziocas lib]$ locate release
+/etc/centos-release
+/etc/centos-release-upstream
+/etc/os-release
+/etc/redhat-release
+
+
+[root@dath classes]# grep -rnw /opt/apache-tomcat-8.0.33/webapps/saserver/WEB-INF/classes -e 3306
+
+-r or -R is recursive,
+-n is line number, and
+-w stands for match the whole word. 
+
+/opt/apache-tomcat-8.0.33/webapps/saserver/WEB-INF/classes/setupEngineApplicationContext.xml:441:  <property name="defaultPort" value="3306"/>

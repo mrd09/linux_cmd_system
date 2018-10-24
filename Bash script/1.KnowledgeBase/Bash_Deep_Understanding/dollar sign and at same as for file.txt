@@ -1,0 +1,1 @@
+for file is equivalent to for file in "$@" 

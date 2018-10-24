@@ -1,0 +1,29 @@
+[root@CMS-OPER-02 201805]# find ../2018*/207748 -type f -name "*_2.ts" -exec chmod 644 {} \;
+[root@CMS-OPER-02 201805]# 
+[root@CMS-OPER-02 201805]# find ../2018*/207748 -type f -name "*_2.ts" -exec ls {} \;
+../201803/207748/207748_2.ts
+
+
+[root@CMS-OPER-02 cha]# while read i; do echo "`find ${i}`";done < check.txt 
+/NAS_INGEST02/cms/repository/asset/201805/226005/226005_2.ts
+/NAS_INGEST02/cms/repository/asset/201805/225999/225999_2.ts
+/NAS_INGEST02/cms/repository/asset/201805/225996/225996_2.ts
+/NAS_INGEST02/cms/repository/asset/201805/225993/225993_2.ts
+/NAS_INGEST02/cms/repository/asset/201805/225990/225990_2.ts
+/NAS_INGEST02/cms/repository/asset/201805/225987/225987_2.ts
+/NAS_INGEST02/cms/repository/asset/201805/225984/225984_2.ts
+/NAS_INGEST02/cms/repository/asset/201805/225981/225981_2.ts
+/NAS_INGEST02/cms/repository/asset/201805/225978/225978_2.ts
+
+find: `/NAS_INGEST01/cms/repository/asset/201805/226005/226005_4.m3u8': No such file or directory
+
+/NAS_INGEST01/cms/repository/asset/201805/225999/225999_4.m3u8
+/NAS_INGEST01/cms/repository/asset/201805/225996/225996_4.m3u8
+/NAS_INGEST01/cms/repository/asset/201805/225993/225993_4.m3u8
+find: `/NAS_INGEST01/cms/repository/asset/201805/225990/225990_4.m3u8': No such file or directory
+
+/NAS_INGEST01/cms/repository/asset/201805/225987/225987_4.m3u8
+/NAS_INGEST01/cms/repository/asset/201805/225984/225984_4.m3u8
+find: `/NAS_INGEST01/cms/repository/asset/201805/225981/225981_4.m3u8': No such file or directory
+
+/NAS_INGEST01/cms/repository/asset/201805/225978/225978_4.m3u8

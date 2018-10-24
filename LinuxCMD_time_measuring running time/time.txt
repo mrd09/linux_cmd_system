@@ -1,0 +1,8 @@
+root@linuxnix:~/sh# time bash lets_sleep.sh
+Enter your name:surendra
+Welcome surendra
+real 0m2.227s
+user 0m0.000s
+sys 0m0.000s
+
+root@linuxnix:~/sh# time ls 

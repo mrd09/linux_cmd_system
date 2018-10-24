@@ -1,0 +1,8 @@
+How to do it on Debian /Ubantu / kali ?
+
+- install ssh server according to your distro.
+- start the service by cmd <<>>service ssh start<<>>
+- port forward 22(ssh) port in your router.
+
+- On Remote compute type this command to access the pc.
+	ssh <user>@<publicIp>

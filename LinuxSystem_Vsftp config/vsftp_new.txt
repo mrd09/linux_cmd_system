@@ -1,0 +1,15 @@
+# vim /etc/vsftpd/vsftpd.conf
+
+pam_service_name=vsftpd
+userlist_enable=YES
+tcp_wrappers=YES
+user_config_dir=/etc/vsftpd/users/
+
+# vim /etc/vsftpd/users/test
+
+anon_mkdir_write_enable=YES
+anon_other_write_enable=YES
+anon_upload_enable=YES
+dirlist_enable=YES
+download_enable=NO
+write_enable=YES

@@ -1,0 +1,30 @@
+
+
+
+[vt_admin@CMS-OPER-01 cms_log]$ grep -ir 212022 . | grep sig
+./cms.log.2018-04-07-14:2018-04-07,14:06:00.305,INFO,CdnCompletionCheckerJob.java,[quartzScheduler_Worker-8]checkDir(112),"Error Found=/NAS_INGEST01/cdn/ott_rvod_error/212022_4.sig"
+./cms.log.2018-04-07-18:2018-04-07,18:46:00.106,INFO,CdnCompletionCheckerJob.java,[quartzScheduler_Worker-2]checkDir(133),"FilePath=/NAS_DIST02/cdn/loaded/hybrid_rvod/212022_2.sig"
+
+./cms.log.2018-04-09-11:2018-04-09,11:31:00.247,INFO,CdnCompletionCheckerJob.java,[quartzScheduler_Worker-4]checkDir(112),"Error Found=/NAS_DIST02/cdn/error/212022_2.sig"
+./cms.log.2018-04-09-14:2018-04-09,14:43:00.177,INFO,CdnCompletionCheckerJob.java,[quartzScheduler_Worker-9]checkDir(133),"FilePath=/NAS_INGEST01/cdn/ott_rvod_sig/212022_4.sig"
+
+./cms.log.2018-04-10-08:2018-04-10,08:44:00.157,INFO,CdnCompletionCheckerJob.java,[quartzScheduler_Worker-6]checkDir(112),"Error Found=/NAS_INGEST01/cdn/ott_rvod_error/212022_4.sig"
+./cms.log.2018-04-10-08:2018-04-10,08:47:00.196,INFO,CdnCompletionCheckerJob.java,[quartzScheduler_Worker-7]checkDir(133),"FilePath=/NAS_DIST02/cdn/loaded/hybrid_rvod/212022_2.sig"
+
+
+[vt_admin@CMS-OPER-01 cms_log]$ grep -ir 212022 . | grep "Moving asset"
+
+./cms.log.2018-04-07-18:2018-04-07,18:48:12.028,INFO,AssetMovingJob.java,[quartzScheduler_Worker-4]executeInternal(83),"Moving asset - (287084) to (/NAS_INGEST02/cms/repository/asset/201804/212022/212022_2.ts) success"
+
+./cms.log.2018-04-09-14:2018-04-09,14:52:43.425,INFO,AssetMovingJob.java,[quartzScheduler_Worker-7]executeInternal(83),"Moving asset - (287085) to (/NAS_INGEST02/cms/repository/asset/201804/212022/212022_4.m3u8) success"
+
+./cms.log.2018-04-10-08:2018-04-10,08:52:00.081,INFO,AssetMovingJob.java,[quartzScheduler_Worker-1]executeInternal(83),"Moving asset - (287084) to (/NAS_INGEST02/cms/repository/asset/201804/212022/212022_2.ts) success"
+
+
+last log => losing file
+./cms.log.2018-04-10-08:2018-04-10,08:38:23.976,INFO,ServiceFlowServiceImpl.java,[http-bio-18080-exec-403]deployMediaToCdn(796),"assetid(287084), src(/NAS_INGEST02/cms/repository/asset/201804/212022/212022_2.ts) target(/NAS_DIST02/cdn/import_mpg/hybrid_rvod/212022_2.ts)"
+./cms.log.2018-04-10-08:2018-04-10,08:39:52.771,INFO,ServiceFlowServiceImpl.java,[http-bio-18080-exec-403]deployMediaToCdn(838),"Start move file to  destFilePath  = /NAS_DIST02/cdn/import_mpg/hybrid_rvod/212022_2.ts"
+./cms.log.2018-04-10-08:2018-04-10,08:39:52.773,INFO,ServiceFlowServiceImpl.java,[http-bio-18080-exec-403]deployMediaToCdn(796),"assetid(287085), src(/NAS_INGEST02/cms/repository/asset/201804/212022/212022_4.m3u8) target(/NAS_INGEST01/cdn/ott_rvod/212022_4.m3u8)"
+./cms.log.2018-04-10-08:2018-04-10,08:41:27.153,INFO,ServiceFlowServiceImpl.java,[http-bio-18080-exec-403]deployMediaToCdn(838),"Start move file to  destFilePath  = /NAS_INGEST01/cdn/ott_rvod/212022_4.m3u8"
+
+

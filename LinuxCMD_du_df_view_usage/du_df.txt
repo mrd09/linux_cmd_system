@@ -1,0 +1,18 @@
+Xem usage cua folder:
+	-h: human read
+	# du -h /castis/bin/
+	688K	/castis/bin/SimpleVODClient_v4.1.1.QR2
+	20M	/castis/bin/CiDFSServer
+	548K	/castis/bin/VODlicense
+	24M	/castis/bin/CiVODServer
+	128M	/castis/bin/CiADS
+	14M	/castis/bin/CiGSDMServer
+	238M	/castis/bin/
+	
+Xem capacity cua phan vung:
+	# df -h
+	Filesystem      Size  Used Avail Use% Mounted on
+	/dev/sda1        30G  5.9G   23G  21% /
+	tmpfs           1.9G     0  1.9G   0% /dev/shm
+	data1            22T  229G   22T   2% /data1
+	shared           99G   37G   62G  38% /shared
