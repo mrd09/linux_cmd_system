@@ -1,0 +1,7 @@
+http contains keyfile
+http contains verimatrix
+http contains "27.67.49.248"
+http contains "CAB"
+http contains "drm"
+
+ip.addr == 27.67.49.248

@@ -1,0 +1,17 @@
+search for mobile hotspot => enable
+
+http://www.wikihow.com/Enable-a-Virtual-WiFi-in-Windows
+
+>netsh wlan show drivers
+.....
+Hosted network supported  : Yes
+.....
+
+>netsh wlan set hostednetwork mode=allow ssid=hidden key=dat@1234
+The hosted network mode has been set to allow.
+The SSID of the hosted network has been successfully changed.
+The user key passphrase of the hosted network has been successfully changed.
+
+
+>netsh wlan start hostednetwork
+The hosted network started.

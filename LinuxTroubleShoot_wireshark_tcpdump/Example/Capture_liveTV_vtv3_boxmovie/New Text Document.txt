@@ -1,0 +1,18 @@
+
+eth0      Link encap:Ethernet  HWaddr 94:18:82:81:9C:28  
+          inet addr:10.42.9.146
+
+bond1:1   Link encap:Ethernet  HWaddr 14:02:EC:92:7E:19  
+          inet addr:27.67.64.105  Bcast:27.67.64.127  Mask:255.255.255.192
+          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1
+=> 162 box movie : drm 
+
+bond1:1   Link encap:Ethernet  HWaddr 90:E2:BA:90:B9:28  
+          inet addr:27.67.64.103 
+
+eth0      Link encap:Ethernet  HWaddr 40:F2:E9:2D:2F:B2  
+          inet addr:10.42.9.140
+=> 155 vtv3: no drm                    
+
+
+#EXT-X-KEY:METHOD=AES-128,URI="https://27.67.49.248/CAB/keyfile?r=162&t=DTV&p=1539336600",IV=0x00000000000000000000000000000000
