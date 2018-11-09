@@ -1,0 +1,14 @@
+$ cat list_git.txt
+/f/The Linux Command Line - William Shotts/Devops/2_Git/gitcli_github_quick/
+/f/The Linux Command Line - William Shotts/Devops/Docker/docker/
+/f/The Linux Command Line - William Shotts/Java_Eclipse/
+/f/The Linux Command Line - William Shotts/Part 1 - Learning the shell/
+/f/The Linux Command Line - William Shotts/Python book/3
+/f/The Linux Command Line - William Shotts/Python book/python_project/
+/f/The Linux Command Line - William Shotts/UML_FlowDesign/
+
+
+$ git_dir=$(awk "NR==2" list_git.txt); echo $git_dir
+/f/The Linux Command Line - William Shotts/Devops/Docker/docker/
+
+

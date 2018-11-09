@@ -1,0 +1,8 @@
+uniq -d file.txt
+       -d, --repeated
+              only print duplicate lines
+
+Combine to print the duplicate value in specific column:
+
+[vt_admin@CMS-MM-02 Aug_ApproveTime]$ sort -nk3 Aug_ApproveTime.txt | awk -F ' ' '{print $3}' | uniq -d | wc -l
+283         

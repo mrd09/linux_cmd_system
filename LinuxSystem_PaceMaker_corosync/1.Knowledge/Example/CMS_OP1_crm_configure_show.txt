@@ -1,0 +1,143 @@
+- IP infor MM1:
+[root@CMS-OPER-01 vt_admin]# ifconfig 
+bond0     Link encap:Ethernet  HWaddr 6C:AE:8B:54:86:C4  
+          inet addr:172.23.32.7  Bcast:172.23.32.63  Mask:255.255.255.192
+          inet6 addr: fe80::6eae:8bff:fe54:86c4/64 Scope:Link
+          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1
+          RX packets:301105979510 errors:0 dropped:1739 overruns:579850 frame:0
+          TX packets:345514741312 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:20000 
+          RX bytes:231241806503051 (210.3 TiB)  TX bytes:399951743951363 (363.7 TiB)
+
+bond0:1   Link encap:Ethernet  HWaddr 6C:AE:8B:54:86:C4  
+          inet addr:172.23.32.9  Bcast:172.23.32.63  Mask:255.255.255.192
+          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1
+
+bond2     Link encap:Ethernet  HWaddr 6C:AE:8B:54:86:C5  
+          inet addr:172.23.0.241  Bcast:172.23.0.243  Mask:255.255.255.252
+          inet6 addr: fe80::6eae:8bff:fe54:86c5/64 Scope:Link
+          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1
+          RX packets:193133049 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:288300282 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:20000 
+          RX bytes:21485548303 (20.0 GiB)  TX bytes:33236407738 (30.9 GiB)
+
+bond3     Link encap:Ethernet  HWaddr 6C:AE:8B:54:86:C3  
+          inet addr:172.23.32.135  Bcast:172.23.32.159  Mask:255.255.255.224
+          inet6 addr: fe80::6eae:8bff:fe54:86c3/64 Scope:Link
+          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1
+          RX packets:28673131 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:19533878 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:2303913737 (2.1 GiB)  TX bytes:27933961777 (26.0 GiB)
+
+eth0      Link encap:Ethernet  HWaddr 6C:AE:8B:54:86:C2  
+          inet addr:10.60.67.135  Bcast:10.60.67.159  Mask:255.255.255.224
+          inet6 addr: fe80::6eae:8bff:fe54:86c2/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:694979182 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1404753732 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:20000 
+          RX bytes:66913841297 (62.3 GiB)  TX bytes:1915900471350 (1.7 TiB)
+          Memory:bc580000-bc59ffff
+
+
+-----------------------------
+- corosync:
+
+[root@CMS-OPER-01 vt_admin]# cat /etc/corosync/corosync.conf
+# Please read the corosync.conf.5 manual page
+compatibility: whitetank
+
+totem {
+	version: 2
+	secauth: off
+	threads: 0
+	interface {
+		ringnumber: 0
+bindnetaddr: 172.23.0.240
+mcastaddr: 239.255.1.11
+mcastport: 4000
+		ttl: 1
+	}
+}
+
+logging {
+	fileline: off
+	to_stderr: no
+	to_logfile: yes
+	to_syslog: yes
+	logfile: /var/log/cluster/corosync.log
+	debug: off
+	timestamp: on
+	logger_subsys {
+		subsys: AMF
+		debug: off
+	}
+}
+
+amf {
+	mode: disabled
+}
+quorum {
+provider: corosync_votequorum
+expected_votes: 2
+}
+
+
+-----------------------------
+- crm configure:
+
+[root@CMS-OPER-01 vt_admin]# crm configure show
+node CMS-OPER-01 \
+	attributes standby="off"
+node CMS-OPER-02 \
+	attributes standby="off"
+primitive BOND0 ocf:heartbeat:ethmonitor \
+	params interface="bond0" \
+	op monitor interval="30s" timeout="30s" depth="0"
+primitive tomcat_ip ocf:heartbeat:IPaddr2 \
+	params ip="172.23.32.9" nic="bond0:1" cidr_netmask="26" \
+	op monitor interval="30s"
+primitive tomcat_monitor lsb:tomcat \
+	op monitor interval="5" timeout="30" depth="0" \
+	meta target-role="Started"
+group OPER_PROCESS tomcat_monitor \
+	meta target-role="Started" multiple-active="stop_start"
+group OPER_VIP BOND0 tomcat_ip \
+	meta target-role="Started" migration-threshold="3" multiple-active="stop_start"
+location master-prefer-node1 OPER_VIP 50: CMS-OPER-01
+colocation TOMCAT-WITH-IP inf: OPER_PROCESS OPER_VIP
+order BOND0-BEFORE-VIP inf: BOND0 tomcat_ip:start
+order VIP-BEFORE-PROCESS inf: OPER_VIP OPER_PROCESS:start
+property $id="cib-bootstrap-options" \
+	dc-version="1.1.10-14.el6_5.1-368c726" \
+	cluster-infrastructure="classic openais (with plugin)" \
+	expected-quorum-votes="2" \
+	stonith-enabled="false" \
+	no-quorum-policy="ignore" \
+	last-lrm-refresh="1527198251"
+rsc_defaults $id="rsc-options" \
+	resource-stickiness="100"
+
+
+---------------------------------------
+
+- crm_mon
+
+Last updated: Sat Nov  3 09:24:29 2018
+Last change: Fri Aug 10 03:47:27 2018 via crm_attribute	on CMS-OPER-02
+Stack: classic openais (with plugin)
+Current DC: CMS-OPER-01	- partition with quorum
+Version: 1.1.10-14.el6_5.1-368c726
+2 Nodes configured, 2 expected votes
+3 Resources configured
+
+
+Online: [ CMS-OPER-01 CMS-OPER-02 ]
+
+ Resource Group: OPER_VIP
+     BOND0	(ocf::heartbeat:ethmonitor):    Started CMS-OPER-01
+     tomcat_ip  (ocf::heartbeat:IPaddr2):	Started CMS-OPER-01
+ Resource Group: OPER_PROCESS
+     tomcat_monitor     (lsb:tomcat):   Started CMS-OPER-01

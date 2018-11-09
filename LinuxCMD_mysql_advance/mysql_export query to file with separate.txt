@@ -1,0 +1,9 @@
+SELECT order_id,product_name,qty FROM orders
+INTO OUTFILE '/tmp/orders.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+
+- Notice that can not run from shell linux:
+MariaDB [cms]> select * from servicehistory where approveTime like '2018-10%' INTO OUTFILE '/tmp/Oct.txt' FIELDS TERMINATED BY ',';
+Query OK, 8908 rows affected (0.33 sec)

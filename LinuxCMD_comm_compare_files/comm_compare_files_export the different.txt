@@ -1,0 +1,20 @@
+- Purpose: I want to compare file1 with file2
+=>  generate a file3 which contains the lines in file1 which are not present in file2
+
+- Syntax:
+# comm -2 -3 <(sort listFileONME_total_09Nov2018.txt) <(sort ../onme_02Nov2018/listFileONME_total_02Nov2018.txt) > diff.txt
+
+NAME
+       comm - compare two sorted files line by line
+
+SYNOPSIS
+       comm [OPTION]... FILE1 FILE2
+
+...
+
+       -1     suppress lines unique to FILE1
+
+       -2     suppress lines unique to FILE2
+
+       -3     suppress lines that appear in both files
+

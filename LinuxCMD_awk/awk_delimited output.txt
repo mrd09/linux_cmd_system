@@ -1,0 +1,8 @@
+- awk without delimiter:
+95482 Công Phượng – nhân tố nổi bật của đội tuyển Việt Nam 2018-10-30 20:54:58
+95506 Cafe On Sports 31/10 2018-10-31 12:47:10
+
+- awk with delimiter: OFS
+#cat Oct_ApproveTime_sort.txt | awk -F ',' -v OFS=',' '{print $3,$4,$5}'
+95482,Công Phượng – nhân tố nổi bật của đội tuyển Việt Nam,2018-10-30 20:54:58
+95506,Cafe On Sports 31/10,2018-10-31 12:47:10

@@ -1,0 +1,41 @@
+Dear all,
+- I've put 2 script: usageCountONME.sh, cpONMEaudit.sh
+in path: 10.60.70.200:/home/vt_admin/audit_script/
+1. usageCountONME.sh
+- when finish will output the 2 main:
+  + listFileONME_exist.txt (will be use for cpONMEaudit.sh)
+  + resultUsageONME.txt (the usage of all ONME VOD content)
+2.  cpONMEaudit.sh
+- Need to modify input the path of ftp_user of the script cpONMEaudit.sh
+...
+ftp_folder=
+...
+- Need listFileONME_exist.txt from 1. copy in path of ftp_user: ftp_folder=
+
+
+-------------------------
+Notice:
+
+- some offer use same asset content
+
+---------------------------
+Dear all,
+
+I've made new script copy file in month, please check in: 10.60.70.200:/home/vt_admin/audit_script/
+- Do the step:
+2.  cpONMEaudit_select.sh
+- Need to modify input the path of ftp_user of the script cpONMEaudit_select.sh: 
+...
+function copy_month {
+ftp_folder=/Modify/the/path
+...
+- Need listFileONME_exist.txt from step 1. copy in path of ftp_user, ftp_folder=
+- copy the script cpONMEaudit_select.sh to path of ftp_user, ftp_folder=
+- Run the script  cpONMEaudit_select.sh:
+*Output Example:
+------------------------
+[root@TESTBED-VOD-CMS onme_download]# ./cpONMEaudit_select.sh 
+1) 201803  3) 201805  5) 201807	 7) 201809
+2) 201804  4) 201806  6) 201808	 8) Quit
+Select option to copy:1
+------------------------

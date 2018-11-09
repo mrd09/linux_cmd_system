@@ -274,6 +274,8 @@ file1 -ot file2           # file1 is older than file2
 -gt                       # greater than
 -ne                       # not equal
 
+#[Loop, condition, statements]
+
 if condition
 then
   statements
@@ -287,6 +289,11 @@ for x := 1 to 10 do
 begin
   statements
 end
+
+for ((i=1; i<=${max}; i++))
+do
+	statements
+done
 
 for name [in list]
 do

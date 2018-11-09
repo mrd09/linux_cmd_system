@@ -1,0 +1,6 @@
+paste -d ' ' Oct_ApproveTime_sort_contentSubsetId.txt Oct_ApproveTime_sort_improve.txt
+
+- Content of "Oct_ApproveTime_sort_contentSubsetId.txt" will paste to the new coulumn in the beginning of file "Oct_ApproveTime_sort_improve.txt"
+
+-d, --delimiters=LIST
+              reuse characters from LIST instead of TABs

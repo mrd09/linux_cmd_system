@@ -1,0 +1,37 @@
+-rw-r----- 1 root root 106183398 Aug 31 16:26 /NAS_INGEST02/cms/repository/asset/201809/268924/268924_2.mp4
+-rw-r----- 1 root root 100890592 Aug 31 16:26 /NAS_INGEST02/cms/repository/asset/201809/268921/268921_2.mp4
+-rw-r----- 1 root root 128037986 Aug 31 16:26 /NAS_INGEST02/cms/repository/asset/201809/268918/268918_2.mp4
+-rw-r----- 1 root root 122523169 Aug 31 16:26 /NAS_INGEST02/cms/repository/asset/201809/268915/268915_2.mp4
+-rw-r----- 1 root root 90078245 Aug 31 16:26 /NAS_INGEST02/cms/repository/asset/201809/268912/268912_2.mp4
+-rw-r----- 1 root root 2971598027 Aug 31 15:52 /NAS_INGEST02/cms/repository/asset/201809/268909/268909_2.mp4
+-rw-r----- 1 root root 3298798504 Aug 31 15:53 /NAS_INGEST02/cms/repository/asset/201809/268906/268906_2.mp4
+-rw-r----- 1 root root 251586506 Aug 31 12:42 /NAS_INGEST02/cms/repository/asset/201809/268858/268858_2.mp4
+-rw-r----- 1 root root 14663016417 Aug 31 08:23 /NAS_INGEST02/cms/repository/asset/201809/268792/268792_2.mp4
+-rw-r----- 1 root root 7719314275 Aug 31 09:04 /NAS_INGEST02/cms/repository/asset/201809/268786/268786_2.mp4
+-rw-r----- 1 root root 8977945838 Aug 30 21:31 /NAS_INGEST02/cms/repository/asset/201809/268557/268557_2.mp4
+-rw-r----- 1 root root 2604865179 Aug 30 17:01 /NAS_INGEST02/cms/repository/asset/201809/268518/268518_2.mp4
+-rw-r----- 1 root root 84618916 Aug 30 16:35 /NAS_INGEST02/cms/repository/asset/201809/268515/268515_2.mp4
+-rw-r----- 1 root root 131366883 Aug 30 16:35 /NAS_INGEST02/cms/repository/asset/201809/268512/268512_2.mp4
+-rw-r----- 1 root root 132151502 Aug 30 16:35 /NAS_INGEST02/cms/repository/asset/201809/268509/268509_2.mp4
+-rw-r----- 1 root root 77577816 Aug 30 16:35 /NAS_INGEST02/cms/repository/asset/201809/268506/268506_2.mp4
+-rw-r----- 1 root root 176611177 Aug 30 16:35 /NAS_INGEST02/cms/repository/asset/201809/268503/268503_2.mp4
+-rw-r----- 1 root root 47277595 Aug 30 16:35 /NAS_INGEST02/cms/repository/asset/201809/268500/268500_2.mp4
+-rw-r----- 1 root root 145077115 Aug 30 13:01 /NAS_INGEST02/cms/repository/asset/201809/268464/268464_2.mp4
+-rw-r----- 1 root root 590416682 Aug 30 13:01 /NAS_INGEST02/cms/repository/asset/201809/268458/268458_2.mp4
+-rw-r----- 1 root root 148371512 Aug 30 13:01 /NAS_INGEST02/cms/repository/asset/201809/268455/268455_2.mp4
+-rw-r----- 1 root root 504937630 Aug 30 13:01 /NAS_INGEST02/cms/repository/asset/201809/268449/268449_2.mp4
+-rw-r----- 1 root root 4146416640 Aug 30 08:59 /NAS_INGEST02/cms/repository/asset/201809/268280/268280_2.mp4
+-rw-r----- 1 root root 394820890 Aug 30 07:31 /NAS_INGEST02/cms/repository/asset/201809/268247/268247_2.mp4
+-rw-r----- 1 root root 359844047 Aug 30 07:31 /NAS_INGEST02/cms/repository/asset/201809/268244/268244_2.mp4
+-rw-r----- 1 root root 142603777 Aug 30 07:31 /NAS_INGEST02/cms/repository/asset/201809/268238/268238_2.mp4
+
+-rw-r----- 1 root root 26340792264 Aug 23 05:29 /NAS_INGEST02/cms/repository/asset/201808/265766/265766_2.mxf
+-rw-r----- 1 root root 20809537480 Aug 17 10:21 /NAS_INGEST02/cms/repository/asset/201808/264267/264267_2.mxf
+-rw-r--r-- 1 cp58user cp58user 4150565704 Aug 7 05:11 /NAS_INGEST01/cms/repository/asset/201808/260889/260889_2.mxf
+-rw-r--r-- 1 cp58user cp58user 4652584872 Aug 7 05:04 /NAS_INGEST01/cms/repository/asset/201808/260715/260715_2.mxf
+-rw-r--r-- 1 cp58user cp58user 3977245488 Aug 7 05:01 /NAS_INGEST01/cms/repository/asset/201808/260365/260365_2.mxf
+-rw-r--r-- 1 cp58user cp58user 5116247048 Aug 7 04:54 /NAS_INGEST01/cms/repository/asset/201808/260147/260147_2.mxf
+-rw-r--r-- 1 cp58user cp58user 298894822 Aug 4 06:56 /NAS_INGEST01/cms/repository/asset/201808/259252/259252_2.mp4
+
+-rw-r--r-- 1 cp58user cp58user 532347775 Apr 10 12:16 /NAS_INGEST01/cms/repository/asset/201804/214641/214641_1.mp4
+-rw-r--r-- 1 cp58user cp58user 451051322 Apr 4 13:38 /NAS_INGEST01/cms/repository/asset/201804/211612/211612_1.mp4

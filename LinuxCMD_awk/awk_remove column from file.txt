@@ -1,0 +1,3 @@
+- Improve the Oct_ApproveTime_sort.txt : remove the first and second column:
+
+awk '!($1=$2="")' Oct_ApproveTime_sort.txt > Oct_ApproveTime_sort_improve.txt

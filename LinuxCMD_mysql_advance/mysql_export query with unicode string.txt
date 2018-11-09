@@ -1,0 +1,14 @@
+
+
+- Notice that if want to export the unicode string from DB: can not do in shell linux, need to be in directly in DB:
+MariaDB [cms]> select * from servicehistory where approveTime like '2018-10%' INTO OUTFILE '/tmp/Oct.txt' FIELDS TERMINATED BY ',';
+Query OK, 8908 rows affected (0.33 sec)
+
+- If query from shell linux head this issue:
+ + permission:
+
+ [vt_admin@CMS-MM-02 Oct_ApproveTime]$ user="cmsuser"; password='castis!cms!@#'; dbIp="172.23.40.6"; dbName="cms";mysql -u${user} -p${password} -D ${dbName} -h ${dbIp} -e "select * from servicehistory where approveTime like '2018-08%' INTO OUTFILE 'Oct.txt' FIELDS TERMINATED BY '|';" 
+ERROR 1045 (28000) at line 1: Access denied for user 'cmsuser'@'172.%' (using password: YES)
+
+ + can not export the unicode string and the specify seperate:
+331879	1	95347	Around Me: M?ng m? khi yêu	2018-10-30 09:03:29	2018-10-30 10:15:14	2018-10-31 15:35:38	2018-10-31 15:53:45	2018-10-31 16:22:05quyen_qc	maitt3

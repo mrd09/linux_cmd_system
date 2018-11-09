@@ -1,0 +1,12 @@
+user="cmsuser"; password='castis!cms!@#'; dbIp="172.23.40.6"; dbName="cms"; list=$(cat list_assetID_ONME_31Oct2018.txt);for i in ${list};do mysql -u${user} -p${password} -D ${dbName} -h ${dbIp} -sN -e "select fileName from contentasset where not fileName like '%.m3u8' and contentSubsetId='${i}';" >> listFileONME_total_31Oct2018.txt; done
+
+
+file=$(cat listFileONME_total_31Oct2018.txt); for i in ${file} ; do if [[ -f ${i} ]]; then echo `ls -lrt ${i}` >> listFileONME_exist_temp_31Oct2018.txt; else echo ${i} >> .listFileONME_NotExist_31Oct2018.txt;fi; done
+
+cat listFileONME_exist_temp_31Oct2018.txt | sort | uniq >> listFileONME_exist_31Oct2018.txt
+
+
+file2=$(cat listFileONME_exist_31Oct2018.txt | cut -d ' ' -f9);for i in ${file2} ; do echo `ls -lrt ${i}` >> usageSpaceOnMe_31Oct2018.txt; done; cat usageSpaceOnMe_31Oct2018.txt | cut -d ' ' -f5 | awk '{sum+=$1} END {print sum/1024/1024}' > resultUsageONME_31Oct2018.txt
+
+=> [vt_admin@CMS-MM-02 onme_31Oct2018]$ cat resultUsageONME_31Oct2018.txt 
+657092  ==> MB
