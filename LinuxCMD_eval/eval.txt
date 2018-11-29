@@ -1,0 +1,42 @@
+- eval is a built in linux or unix command. The eval command is used to execute the arguments as a shell command on unix or linux system.
+
+- Eval command comes in handy:
+ + when you have a unix or linux command stored in a variable and you want to execute that command stored in the string.
+
+- The eval command first evaluates the argument and then runs the command stored in the argument.
+
+- EXAMPLE:
+
+------ Example-1 ----------
+
+To execute that command stored in the string:
+
+$ COMMAND="ls -lrt"
+
+$ eval $COMMAND
+
+output:
+
+total 16
+-rw-rw-r-- 1 user group 11  Oct  4 01:06 sample.sh
+-rw-rw-r-- 1 user group 0   Oct  4 01:06 test.bat
+-rw-rw-r-- 1 user group 0   Oct  4 01:06 xyz_ip
+
+
+---------- Example-2: ------------
+
+To print the value of variable which is again variable with value assigned to it
+
+$ a=10
+
+$ b=a
+
+$ c='$'$b ( note: The dollar sign must be escaped with '$')
+
+$ eval c='$'$b
+
+$ echo $c
+
+output:
+
+10

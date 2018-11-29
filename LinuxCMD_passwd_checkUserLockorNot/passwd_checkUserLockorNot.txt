@@ -1,0 +1,15 @@
+# cat /etc/shadow | grep root 
+	root:!:17844:0:99999:7:::
+
+=> where the ! or a * signalize that the account is disabled.
+=> Any other value (not beginning with ! or *) after root: would indicate a working password.
+
+-------------------
+
+# passwd -S root
+	root L 11/09/2018 0 99999 7 -1
+=> "L"	:	password locked 
+
+# passwd -S dath
+	dath P 11/09/2018 0 99999 7 -1
+=> "P"	:	password set
