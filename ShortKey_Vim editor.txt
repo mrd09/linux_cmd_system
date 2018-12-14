@@ -14,6 +14,10 @@ C2: Uncomment Multiple lines in vim:
 	3. enter :'<,'>s/^#//c 
 		=> which translates to: in selection (:) replace beginning of line (^) have '#' with empty character " " and there will have confirm each substitution
 
+3. Jump to any file in vim:
+- Place the cursor at the file's name
+- Press: "gf" (go to file)
+- If want to jump back to file before: Press "ctrl + o"
 
 ---------- Tutorial --------------
 h - 	move cursor left
