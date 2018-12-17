@@ -18,6 +18,7 @@ C2: Uncomment Multiple lines in vim:
 - Place the cursor at the file's name
 - Press: "gf" (go to file)
 - If want to jump back to file before: Press "ctrl + o"
+- If want to jump forward to file: Press "ctrl + i"
 
 ---------- Tutorial --------------
 h - 	move cursor left
