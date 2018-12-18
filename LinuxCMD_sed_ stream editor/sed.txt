@@ -1,3 +1,47 @@
+===To append a line after last line===
+$ sed '$ a This is the last line' sedtest.txt
+This is line #1
+This is line #2
+This is line #3
+This is line #4
+This is line #5
+This is line #6
+This is line #7
+This is line #8
+This is line #9
+This is line #10
+This is the last line
+
+Lets check it for the latest command we have run to append lines after the last line of the file. Has it made any changes to the file?
+
+$ cat sedtest.txt
+This is line #1
+This is line #2
+This is line #3
+This is line #4
+This is line #5
+This is line #6
+This is line #7
+This is line #8
+This is line #9
+This is line #10
+
+No, the original file remains the same. But, I wanted to save the changes to the file. So, I should have used the option -i.
+
+$ sed -i '$ a This is the last line' sedtest.txt
+$ cat sedtest.txt
+This is line #1
+This is line #2
+This is line #3
+This is line #4
+This is line #5
+This is line #6
+This is line #7
+This is line #8
+This is line #9
+This is line #10
+This is the last line
+------------------------------
 to change only the second match word ( to replace Allow,Deny with Deny,Allow )
 
 Sample tmp_file:
@@ -78,15 +122,15 @@ find /root -type f -exec sed -i 's/test\.com/new/g' {} \;
 
  -exec command ;
               Execute command; true if 0 status is returned.  All following arguments to find are taken to be arguments to the command until an  argument
-              consisting  of  ‘;’ is encountered.  The string ‘{}’ is replaced by the current file name being processed everywhere it occurs in the argu-
+              consisting  of  â€˜;â€™ is encountered.  The string â€˜{}â€™ is replaced by the current file name being processed everywhere it occurs in the argu-
               ments to the command, not just in arguments where it is alone, as in some versions of find.  Both of these constructions might need  to  be
-              escaped  (with a ‘\’) or quoted to protect them from expansion by the shell.  See the EXAMPLES section for examples of the use of the -exec
+              escaped  (with a â€˜\â€™) or quoted to protect them from expansion by the shell.  See the EXAMPLES section for examples of the use of the -exec
               option.  The specified command is run once for each matched file.  The command is executed in the starting directory.   There are  unavoid-
               able security problems surrounding use of the -exec action; you should use the -execdir option instead.
 			  
 find . -type f -exec file '{}' \;
 
-       Runs ‘file’ on every file in or below the current directory.  Notice that the braces are enclosed in single  quote  marks  to  protect  them  from
+       Runs â€˜fileâ€™ on every file in or below the current directory.  Notice that the braces are enclosed in single  quote  marks  to  protect  them  from
        interpretation  as shell script punctuation.  The semicolon is similarly protected by the use of a backslash, though single quotes could have been
        used in that case also.
 
