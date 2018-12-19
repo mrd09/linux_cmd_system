@@ -16,6 +16,7 @@ C2: Uncomment Multiple lines in vim:
 
 3. Jump to any file in vim:
 - Place the cursor at the file's name
+  + If path is not pure is path: Ex: "src=/path/to/files". Need to select only the path by enter the visual mode: "Press v"
 - Press: "gf" (go to file)
 - If want to jump back to file before: Press "ctrl + o"
 - If want to jump forward to file: Press "ctrl + i"
