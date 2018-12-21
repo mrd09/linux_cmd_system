@@ -1,7 +1,10 @@
 
+# REF link
+- [Ref link](https://www.tecmint.com/useful-basic-commands-of-apt-get-and-apt-cache-for-package-management/)
+
 ## How Do I Check Dependencies for Specific Packages?
 - cmd: ```apt-cache showpkg <package name>```
-- Use the ‘showpkg‘ sub command to check the dependencies for particular software packages. whether those dependencies packages are installed or not. For example, use the ‘showpkg‘ command along with package-name.
+- Use the `showpkg` sub command to check the dependencies for particular software packages. whether those dependencies packages are installed or not. For example, use the ‘showpkg‘ command along with package-name.
 ```
 ubuntu@ip-172-28-3-11:~$ apt-cache showpkg postgresql-9.6
 Package: postgresql-9.6
@@ -23,7 +26,7 @@ Reverse Provides:
 
 ## How to download package not install it with apt-get command?
 - cmd: ```apt-get install --download-only <package name>```
-- Use option '--download-only' will:
+- Use option `--download-only` will:
   + This will **download `<package name>` and any dependencies you need**, and place them in **/var/cache/apt/archives**. 
   + That way a subsequent apt-get install **`<package name>`** will be able to complete without any extra downloads.
 ```
@@ -39,4 +42,15 @@ Suggested packages:
 The following NEW packages will be installed:
   libsensors4 postgresql-9.6 postgresql-client-9.6 postgresql-client-common postgresql-common postgresql-contrib-9.6 sysstat
 0 upgraded, 7 newly installed, 0 to remove and 40 not upgraded.
+```
+## Dont install recommend:
+- User option: **--no-install-recommends**
+
+## How do I list all installed packages
+- cmd: `apt list --installed <package name>`
+```
+ubuntu@ip-172-28-1-200:~$ sudo apt list --installed python-docker*
+sudo: unable to resolve host ip-172-28-1-200
+Listing... Done
+python-docker/xenial-updates,now 1.9.0-1~16.04.1 all [installed]
 ```
