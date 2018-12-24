@@ -16,3 +16,23 @@ Xem capacity cua phan vung:
 	tmpfs           1.9G     0  1.9G   0% /dev/shm
 	data1            22T  229G   22T   2% /data1
 	shared           99G   37G   62G  38% /shared
+	
+Xem usage cua folder(ca hidden file):
+      -d, --max-depth=N
+              print  the  total for a directory (or file, with --all) only if it
+              is  N  or  fewer  levels  below   the   command   line   argument;
+              --max-depth=0 is the same as --summarize
+
+$ du -h -d 1 . 
+252K	./galaxy
+16K	./host_vars
+8.0K	./.jira.d
+748K	./templates
+234M	./.git
+196K	./public_keys
+28K	./scripts
+56K	./tasks
+6.4M	./files
+24K	./roles
+484K	./docs
+608K	./group_vars
