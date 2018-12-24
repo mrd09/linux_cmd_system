@@ -54,3 +54,20 @@ sudo: unable to resolve host ip-172-28-1-200
 Listing... Done
 python-docker/xenial-updates,now 1.9.0-1~16.04.1 all [installed]
 ```
+## How do i uninstall a packages:
+- **Remove only the binaries**, ***remain***: **conf or data files of the package `<packagename>`; also leave dependencies installed** with it on installation time untouched.
+```
+apt-get remove packagename
+```
+- **Remove about everything regarding the package `<packagename>`**, ***remain***: **dependencies installed**.
+`apt-get purge packagename or apt-get remove --purge packagename\n `
+    + Particularly ***useful when you want to 'start all over' with an application because you messed up the config***.
+    + However, ***it does not remove configuration or data files residing in users home directories***, usually in hidden folders there. There is no easy way to get those removed as well.
+ - **Only Remove the dependencies packages installed**:
+ ```
+ apt-get autoremove
+ ```
+ =>> ***Combine autoremove(remove dependencies) + purge(rm package binary and conf or data files)***: to remove package completely: remove 
+ ```
+ sudo apt-get --purge autoremove packagename
+ ```
