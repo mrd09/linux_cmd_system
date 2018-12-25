@@ -1,0 +1,15 @@
+### default 172.28.* ##
+Host 172.28.*
+	User ubuntu
+	Port 22
+	IdentityFile ~/.ssh/tmvn-staging.pem
+
+Host 172.29.*
+	User ubuntu
+	Port 22
+	IdentityFile ~/.ssh/tmvn-staging.pem
+
+Host 172.30.*
+	User ubuntu
+	Port 22
+	IdentityFile ~/.ssh/tmvn-staging.pem
