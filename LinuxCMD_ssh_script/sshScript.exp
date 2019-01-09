@@ -62,6 +62,13 @@ spawn ssh $server
 #         exit 1
 #         }
 # }
+
+expect {
+	"(yes/no)? " { 
+        send "yes\r"
+ 	 }
+} 
+
 expect {
 #        "> " { 
 #	interact 
