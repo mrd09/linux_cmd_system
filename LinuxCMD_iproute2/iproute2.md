@@ -1,3 +1,5 @@
+# Syntax:
+- [Sytax](http://manpages.ubuntu.com/manpages/xenial/man5/interfaces.5.html)
 
 # /etc/network/interfaces.d/99-eth1.cfg:
 
@@ -18,17 +20,29 @@ iface {{ ifname }} inet static
 - IFACE OPTIONS : in which case the commands are executed in the order in which they appear in the stanza.  (You can ensure a command never fails by suffixing them with ``"|| true"``.)
 ```
 pre-up command
-              Run  command  before  bringing  the  interface up.  If this command fails then ifup
-              aborts, refraining from marking  the  interface  as  configured,  prints  an  error
-              message, and exits with status 0.  This behavior may change in the future.
+              Run  command  before  bringing  the  interface up.  If this command fails then ifup aborts, refraining from marking  the  interface  as  configured,  prints  an  error message, and exits with status 0.  This behavior may change in the future.
 
-up command
+up/post-up command
+              Run  command  after  bringing  the  interface  up.  If this command fails then ifup aborts, refraining from marking the interface as configured  (even  though  it  has really  been  configured),  prints an error message, and exits with status 0.  This behavior may change in the future.          
 
-post-up command
-              Run  command  after  bringing  the  interface  up.  If this command fails then ifup
-              aborts, refraining from marking the interface as configured  (even  though  it  has
-              really  been  configured),  prints an error message, and exits with status 0.  This
+down/pre-down command
+              Run  command  before  taking the interface down.  If this command fails then ifdown aborts, marks the interface as deconfigured (even though it  has  not  really  been
+              deconfigured), and exits with status 0.  This behavior may change in the future.
+
+post-down command
+              Run  command  after  taking  the interface down.  If this command fails then ifdown aborts, marks the interface  as  deconfigured,  and  exits  with  status  0.   This
               behavior may change in the future.              
+
+- Example:
+auto eth0
+allow-hotplug eth0
+iface eth0 inet static
+    address 192.168.1.42  
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    up   ip addr add 192.168.1.43/24 dev $IFACE label $IFACE:0
+    down ip addr del 192.168.1.43/24 dev $IFACE label $IFACE:0
+
 ```
 - INET ADDRESS FAMILY
 ```
