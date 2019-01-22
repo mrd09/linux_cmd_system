@@ -32,8 +32,7 @@ ibus restart
 - Ctrl X : Exit
 
 ## vim:
-- put console mouse in file path -> press: gf
-	+ if want to go back to file: Ctrl + o
+- [tutorial](https://github.com/mrd09/vim.git)
 
 ## Autokey-gtk: set hot key for quick pass string to terminal
 - install autokey-gtk: sudo apt-get install autokey-gtk
@@ -43,4 +42,9 @@ ibus restart
     - fill the string want to pass
     - Hotkey/Set: Ctrl + Press to Set
     - Window Filter/Set/Detect Window Properties: Auto detect: gnome-terminal-server.Gnome-terminal
+        - If want to have multiple apps window: use "&": gnome-terminal-server.Gnome-terminal & remmina.Remmina.*
+        - Or use python regular expression: `[terminator.Terminator, gnome-terminal-server.Gnome-terminal]` 
+        - [python regular expression](https://docs.python.org/3/library/re.html)
+        - [regular exp python stackover flow](https://stackoverflow.com/questions/26985228/python-regular-expression-match-multiple-words-anywhere)
     - Save then use
+- [Special key](https://github.com/autokey/autokey/wiki/Special-Keys)
