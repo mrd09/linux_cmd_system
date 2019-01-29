@@ -52,7 +52,7 @@ ibus restart
 - [git bash prompt](https://github.com/magicmonty/bash-git-prompt)
 
 ## Cool alias in bashrc:
-- [ssh2 version]()
+- [ssh2 version](https://github.com/mrd09/linux_cmd_system/tree/master/LinuxCMD_ssh2_script)
 ```alias ssh2='/home/mrd09/knowledge/ssh_script/run.sh'```
 - git bash prompt:
 ```
