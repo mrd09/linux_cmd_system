@@ -10,6 +10,10 @@
 # Date: 2014/11/04
 #####################################################
 
+# combine output from two commands in bash
+
+{ command1 & command2; } 
+
 # * Regular Expression:
 
 ^ (Caret)       = match expression at the start of a line, as in ^A.

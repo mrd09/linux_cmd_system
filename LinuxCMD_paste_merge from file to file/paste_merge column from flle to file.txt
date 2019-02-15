@@ -4,3 +4,19 @@ paste -d ' ' Oct_ApproveTime_sort_contentSubsetId.txt Oct_ApproveTime_sort_impro
 
 -d, --delimiters=LIST
               reuse characters from LIST instead of TABs
+
+- Combine merge 2 output from 2 cmd in bash:
+ $ paste -d 'delimiter' <(command1) <(command2)
+```
+$ paste -d "\t" <(sudo docker ps -a --format "{{.Names}}") <(sudo docker ps -a --format "{{.Image}}" | awk -F '/' '{print $3}' | awk -F ':' '{print $2}')
+bankgw-connector    v1.6.4_rc6-1-g4471376
+bankgw-backend  v1.9.7_rc1-1-g421bcf0
+sbv-monitoring  v1.5-9-g7279cc2
+bankgw-sbv-backend  v1.8.8-29-ge37912a
+bankgw-frontend v1.8.7_rc1-13-g7debf2e
+bankgw-initiator    v1.0.3_rc2-1-gdce5677
+bankgw-forwarder    v1.1.5_rc1-6-g5d12114
+bankgw-demo v1.1.1-9-g7cdc1d2
+bankgw-invoice  v2.0_rc2-1-g10a0867
+bankgw-oauth    v1.0_rc1-0-gc633d82
+```              
