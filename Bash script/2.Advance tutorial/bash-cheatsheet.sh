@@ -14,6 +14,40 @@
 
 { command1 & command2; } 
 
+# List and Tuple in Bash?
+- in Bash there is no tuple and list datatype
+- List: [value1, value2, value3]
+- Tuple: (value1, value2, value3)
+'''
+Tuples are fixed size in nature whereas lists are dynamic.
+In other words, a tuple is immutable whereas a list is mutable.
+
+    You can't add elements to a tuple. Tuples have no append or extend method.
+    You can't remove elements from a tuple. Tuples have no remove or pop method.
+    You can find elements in a tuple, since this doesn’t change the tuple.
+    You can also use the in operator to check if an element exists in the tuple.
+
+    Tuples are faster than lists. If you're defining a constant set of values and all you're ever going to do with it is iterate through it, use a tuple instead of a list.
+
+    It makes your code safer if you “write-protect” data that does not need to be changed. Using a tuple instead of a list is like having an implied assert statement that this data is constant, and that special thought (and a specific function) is required to override that.
+
+    Some tuples can be used as dictionary keys (specifically, tuples that contain immutable values like strings, numbers, and other tuples). Lists can never be used as dictionary keys, because lists are not immutable.
+'''
+- Tuples alike use in bash: 
+for i in a,b c,d;do
+    IFS=',' read tuple1 tuple2 <<< ${i}
+    echo "This will be a or c: ${tuple1}"
+    echo "This will be b or d: ${tuple2}"
+done
+
+'''
+$ ./tuple.sh 
+This will be a or c: a
+This will be b or d: b
+This will be a or c: c
+This will be b or d: d
+'''
+  
 # * Regular Expression:
 
 ^ (Caret)       = match expression at the start of a line, as in ^A.
