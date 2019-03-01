@@ -2,7 +2,26 @@
 95482 Công Phượng – nhân tố nổi bật của đội tuyển Việt Nam 2018-10-30 20:54:58
 95506 Cafe On Sports 31/10 2018-10-31 12:47:10
 
+libpq5_11.2-1.pgdg16.04+1_amd64.deb
+pgdg-keyring_2018.2_all.deb
+postgresql-9.6_9.6.12-1.pgdg16.04+1_amd64.deb
+postgresql-client-9.6_9.6.12-1.pgdg16.04+1_amd64.deb
+postgresql-client-common_199.pgdg16.04+1_all.deb
+postgresql-common_199.pgdg16.04+1_all.deb
+postgresql-contrib-9.6_9.6.12-1.pgdg16.04+1_amd64.deb
+ssl-cert_1.0.37_all.deb
+
 - awk with delimiter: OFS
 #cat Oct_ApproveTime_sort.txt | awk -F ',' -v OFS=',' '{print $3,$4,$5}'
 95482,Công Phượng – nhân tố nổi bật của đội tuyển Việt Nam,2018-10-30 20:54:58
 95506,Cafe On Sports 31/10,2018-10-31 12:47:10
+
+$ ls | grep .deb | awk -F '_' -v OFS=',' '{print $1,$2}'
+libpq5,11.2-1.pgdg16.04+1
+pgdg-keyring,2018.2
+postgresql-9.6,9.6.12-1.pgdg16.04+1
+postgresql-client-9.6,9.6.12-1.pgdg16.04+1
+postgresql-client-common,199.pgdg16.04+1
+postgresql-common,199.pgdg16.04+1
+postgresql-contrib-9.6,9.6.12-1.pgdg16.04+1
+ssl-cert,1.0.37
