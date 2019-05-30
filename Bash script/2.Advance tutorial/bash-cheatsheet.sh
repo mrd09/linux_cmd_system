@@ -10,9 +10,25 @@
 # Date: 2014/11/04
 #####################################################
 
+# Redirection:
+- >   :   mean send to as a whole completed file, overwriting target if exist (see noclobber bash feature at #3 later).
+- >>  :   mean send in addition to would append to target if exist.
+
+# File descriptor
+- >&  :   syntax to redirect(>) a stream to another file descriptor
+- 0 is stdin, 1 is stdout, and 2 is stderr
+- Example:
+'''
+2>&1 >output.log        :   send standard error and standard output to the "log file".
+2>&1 | tee output.log   :   same with the 2>&1, So it combines the two streams (error and output), then outputs that to the "terminal" and the "file".
+'''
+
+
 # combine output from two commands in bash
 
-{ command1 & command2; } 
+{ command1 & command2; }
+OR
+paste -d ' ' <(command1) <(command2)
 
 # List and Tuple in Bash?
 - in Bash there is no tuple and list datatype
