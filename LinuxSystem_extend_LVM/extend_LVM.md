@@ -1,0 +1,1 @@
+[Extend LVM](https://www.tecmint.com/extend-and-reduce-lvms-in-linux/)
