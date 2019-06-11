@@ -63,21 +63,107 @@ This will be b or d: b
 This will be a or c: c
 This will be b or d: d
 '''
-  
+
+# [Regular Expression Test](https://regex101.com/)
+
 # * Regular Expression:
 
-^ (Caret)       = match expression at the start of a line, as in ^A.
-$ (Question)    = match expression at the end of a line, as in A$.
+^ (Caret)       = match expression at the start of string, as in ^A.
+$ (Question)    = match expression at the end of a string, as in A$.
 \ (Back Slash)  = turn off the special meaning of the next character, as in \^.
 [ ] (Brackets)  = match any one of the enclosed characters, as in [aeiou]. Use Hyphen "-" for a range, as in [0-9].
 [^ ]            = match any one character except those enclosed in [ ], as in [^0-9].
 . (Period)      = match a single character of any value, except end of line.
 * (Asterisk)    = match zero or more of the preceding character or expression.
+{n}             = repeats n times
 \{x,y\}         = match x to y occurrences of the preceding.
 \{x\}           = match exactly x occurrences of the preceding.
 \{x,\}          = match x or more occurrences of the preceding.
 
-## Regular Expression Example:
+       c          Matches the non-metacharacter c.
+
+       \c         Matches the literal character c.
+
+       .          Matches any character including newline.
+
+       ^          Matches the beginning of a string.
+
+       $          Matches the end of a string.
+
+       [abc...]   A character list: matches any of the characters abc....  You may include a range of characters by separating them with a dash.
+
+       [^abc...]  A negated character list: matches any character except abc....
+
+       r1|r2      Alternation: matches either r1 or r2.
+
+       r1r2       Concatenation: matches r1, and then r2.
+
+       r+         Matches one or more r's.
+
+       r*         Matches zero or more r's.
+
+       r?         Matches zero or one r's.
+
+       (r)        Grouping: matches r.
+
+       r{n}
+       r{n,}
+       r{n,m}     One  or  two  numbers  inside braces denote an interval expression.  If there is one number in the braces, the preceding regular expression r is
+                  repeated n times.  If there are two numbers separated by a comma, r is repeated n to m times.  If there is one number followed by a comma,  then
+                  r is repeated at least n times.
+
+
+       \y         Matches the empty string at either the beginning or the end of a word.
+
+       \B         Matches the empty string within a word.
+
+       \<         Matches the empty string at the beginning of a word.
+
+       \>         Matches the empty string at the end of a word.
+
+       \s         Matches any whitespace character.
+
+       \S         Matches any nonwhitespace character.
+
+       \w         Matches any word-constituent character (letter, digit, or underscore).
+
+       \W         Matches any character that is not word-constituent.
+
+       \`         Matches the empty string at the beginning of a buffer (string).
+
+       \'         Matches the empty string at the end of a buffer.
+
+The escape sequences that are valid in string constants (see String Constants) are also valid in regular expressions.
+
+A  character  class is only valid in a regular expression inside the brackets of a character list.  Character classes consist of [:, a keyword denoting the
+       class, and :].  The character classes defined by the POSIX standard are:
+
+       [:alnum:]  Alphanumeric characters.
+
+       [:alpha:]  Alphabetic characters.
+
+       [:blank:]  Space or tab characters.
+
+       [:cntrl:]  Control characters.
+
+       [:digit:]  Numeric characters.
+
+       [:graph:]  Characters that are both printable and visible.  (A space is printable, but not visible, while an a is both.)
+
+       [:lower:]  Lowercase alphabetic characters.
+
+       [:print:]  Printable characters (characters that are not control characters.)
+
+       [:punct:]  Punctuation characters (characters that are not letter, digits, control characters, or space characters).
+
+       [:space:]  Space characters (such as space, tab, and formfeed, to name a few).
+
+       [:upper:]  Uppercase alphabetic characters.
+
+       [:xdigit:] Characters that are hexadecimal digits.
+
+
+## Regular Expression Example: use grep or grep -E
 
 
 grep '^From: ' /usr/mail/$USER    {list your mail}
@@ -90,7 +176,66 @@ grep '"*smug"*'                   {'smug', with or without quotes}
 grep '^\.'                        {any line that starts with a Period "."}
 grep '^\.[a-z][a-z]'              {line start with "." and 2 lc letters}
 
+cat test.txt | grep -E '[[:upper:]]'  =>  TESTcap
 
+^\w 
+Matches the start of a string: start of string => 'start' of string
+
+\w&
+Matches the end of a string: end of string => end of 'string'
+
+a+
+Matches one or more consecutive `a` characters.: a aa aaa aaaa bab baab => 'a' 'aa' 'aaa' 'aaaa' b'a'b b'aa'b
+
+ba*
+Matches zero or more consecutive `a` characters.: a ba baa aaa ba b => a 'ba' 'baa' aaa 'ba' 'b'
+
+ba?
+Matches an `a` character or nothing.: ba b a => 'ba' 'b' a
+
+a{3}
+Matches exactly 3 consecutive `a` characters: a aa aaa aaaa  => a aa 'aaa' 'aaa'a
+
+a{3,}
+Matches at least 3 consecutive `a` characters.: a aa aaa aaaa aaaaaa => a aa 'aaa' 'aaaa' 'aaaaaa'
+
+a{3,6}
+Matches between 3 and 6 (inclusive) consecutive `a` characters.: a aa aaa aaaa aaaaaaaaaa => a aa 'aaa' 'aaaa' 'aaaaaa'aaaa
+
+(a|b)
+Matches the a or the b part of the subexpression.: beach => 'b'e'a'ch
+
+[abc]
+Matches either an a, b or c character: a bb ccc => 'a' 'bb' 'ccc'
+
+[ABC]
+Matches either an A, B or C character: A bb ccc => 'A' bb ccc
+
+[^abc]
+Matches any character except for an a, b or c: Anything but abc. => 'Anything' b'ut' abc'.'
+
+[a-z]
+Matches any characters between a and z, including a and z.: Only a-z => O'nly' 'a'-'z'
+
+[A-Z]
+Matches any characters between A and Z, including A and Z.: Only A-Z => O'nly' 'A'-'Z'
+
+(Name test)
+capture everything enclosed: Name test asdtestName test => 'Name test' asdtest'Name test'
+
+(?|(candy)|(kiss)|(berry))
+Any subpatterns in (...) in such a group share the same number.: A candy, kiss, or even a berry is delicious. => A 'candy', 'kiss', or even a 'berry' is delicious.
+
+\w
+Matches any letter, digit or underscore. Equivalent to [a-zA-Z0-9_]. : any word character => 'any' 'word' 'character'
+
+\W
+Matches anything other than a letter, digit or underscore.: not'.'a'@'word'%'character => 
+
+[[:digit:]]
+Matches any decimal digit. Equivalent to [0-9].
+
+############################################
 
 # single line comment
 
