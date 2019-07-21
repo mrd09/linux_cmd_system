@@ -10,6 +10,17 @@
 # Date: 2014/11/04
 #####################################################
 
+# file permission:
+- It is important to remember that these three permissions differs when applied to files or directories:
++-----------+--------------------------------+---------------------------------------------------------+
+|Permission |  Applied to file               |  Applied to Directory                                   |
++------------------------------------------------------------------------------------------------------+
+|Read       |  Open and read file contents   |  List contents of dir                                   |
+|Write      |  Change the contents of file   |  Create and delete files/sub+dirs and modify permissions|
+|Execute    |  Run the file as program/script|  Enter into the dir                                     |
++-----------+------------------------------------------------------------------------------------------+
+
+
 # Redirection:
 - >   :   mean send to as a whole completed file, overwriting target if exist (see noclobber bash feature at #3 later).
 - >>  :   mean send in addition to would append to target if exist.
@@ -390,6 +401,8 @@ array(val val val)
 ${array[i]}                  # displays array's value for this index. If no index is supplied, array element 0 is assumed
 ${#array[i]}                 # to find out the length of any element in the array
 ${#array[@]}                 # to find out how many values there are in the array
+$@                           # is equal to "$1" "$2"... "$N", where N is the number of positional parameters. 
+$#                           # holds the number of positional parameters.
 
 declare -a                   # the variables are treaded as arrays
 declare -f                   # uses funtion names only

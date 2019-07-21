@@ -10,9 +10,9 @@ awk
 	NR
 		The total number of input records seen so far.
 	OFS
-		The output field separator, a space by default.
+		The output field separator, a space by default. => column separator
 	ORS
-		The output record separator, by default a newline.
+		The output record separator, by default a newline. => record separator
 
 awk Example:
 
@@ -30,6 +30,10 @@ awk Example:
 
   awk '{print}' ORS=' '	=> Print the Output with Record Separator Variable
 	=> in this example: seperate by space
+
+  $ awk -F':' 'BEGIN{OFS="=";} {print $3,$4;}' /etc/passwd => Print the Output with field separator
+    => 41=41
+       100=101
 
   [root@CASTIS-DEV-1 dath]# ls *.sql | awk -F '.sql' '{print $0}'
   	cms_1_12_subtitle_not_update.sql
