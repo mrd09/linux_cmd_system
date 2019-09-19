@@ -9,6 +9,50 @@
 # Author: J. Le Coupanec
 # Date: 2014/11/04
 #####################################################
+[Bash scripting cheatsheet](https://devhints.io/bash)
+
+# Substitution
+- ${FOO/from/to}  Replace first match
+- ${FOO//from/to}   Replace all
+- ${FOO%suffix}   Remove suffix
+- ${FOO#prefix}   Remove prefix
+- ${FOO%%suffix}  Remove long suffix
+- ${FOO##prefix}  Remove long prefix
+
+- Example
+```
+name="John-test1-test2"
+echo ${name/-/_}    #=> "John_test1-test2" (replace first match)
+echo ${name//-/_}   #=> "John_test1_test2" (replace all match)
+echo ${name##John-} #=> "test1-test2" (remove prefix John-)
+echo ${name%%-*}    #=> "John" (remove suffix begin with -)
+```
+
+
+# String manipulation tips:
+STR="Hello world"
+echo ${STR:6:5}   # "world"
+echo ${STR:-5:5}  # "world"
+- Example:
+```
+$ ls config/ | xargs basename -a
+confd_display_banner
+confd_test_abc
+confd_test_abc
+confd_test_abc
+confd_test_abc
+confd_test_abc
+confd_test_abc
+confd_test_abc
+confd_test_abc
+$ test="confd_display_banner";echo ${test:6}
+display_banner
+```
+
+SRC="/path/to/foo.cpp"
+BASE=${SRC##*/}   #=> "foo.cpp" (basepath)
+DIR=${SRC%$BASE}  #=> "/path/to/" (dirpath)
+
 
 # file permission:
 - It is important to remember that these three permissions differs when applied to files or directories:
@@ -390,6 +434,10 @@ echo $varname                # checks a variable's value
 echo $$                      # prints process ID of the current shell
 echo $!                      # prints process ID of the most recently invoked background job
 echo $?                      # displays the exit status of the last command
+        Exit code 0        Success
+        Exit code 1        General errors, Miscellaneous errors, such as "divide by zero" and other impermissible operations
+        Exit code 2        Misuse of shell builtins (according to Bash documentation) 
+
 export VARNAME=value         # defines an environment variable (will be available in subprocesses)
 
 array[0] = val               # several ways to define an array
